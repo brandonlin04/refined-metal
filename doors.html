@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doors - Refined Metal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-900 bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gray-300 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <!-- Logo Placeholder -->
+                    <a href="index.html" class="flex-shrink-0 flex items-center mr-8 hover:opacity-80 transition-opacity duration-200">
+                        <img src="images/rm-logo.png" alt="Refined Metal Logo" class="h-12 w-auto">
+                        <span class="ml-3 text-2xl font-bold text-gray-900">Refined Metal</span>
+                    </a>
+                    <!-- Navigation Menu -->
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-6 lg:space-x-8">
+                        <a href="index.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">Home</a>
+                        <a href="about.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">About Us</a>
+                        <a href="studs.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">Studs</a>
+                        <a href="tracks.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">Tracks</a>
+                        <a href="joists.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">Joists</a>
+                        <a href="decking.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">Decking</a>
+                        <a href="doors.html" class="border-gray-300 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">Doors</a>
+                        <a href="railings.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">Railings</a>
+                        <a href="icces-report.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">ICCES Report</a>
+                        <a href="contact.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-gradient">
+        <div class="max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
+                    Doors
+                </h1>
+                <p class="mt-4 text-xl text-gray-500 max-w-3xl mx-auto">
+                    High-quality aluminum doors for residential and commercial applications
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Overview -->
+    <div class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center">
+                <div>
+                    <h2 class="text-4xl font-extrabold text-gray-900 mb-6">Refined Metal Doors</h2>
+                    <p class="text-lg text-gray-600 leading-relaxed mb-6">
+                        Refined Metal offers a comprehensive range of aluminum doors designed for both residential and commercial applications. Our doors combine durability, security, and aesthetic appeal with precision engineering and quality materials.
+                    </p>
+                    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+                        From standard stock designs to fully customized solutions, our doors are engineered to meet the most demanding requirements. We offer both stock configurations for quick delivery and custom fabrication for unique architectural needs.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="contact.html" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white" style="background-color: #C0C0C0;" onmouseover="this.style.backgroundColor='#A0A0A0'" onmouseout="this.style.backgroundColor='#C0C0C0'">
+                            <i data-feather="phone" class="mr-2"></i> Contact Us
+                        </a>
+                        <a href="#product-lines" class="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50">
+                            View Product Lines <i data-feather="arrow-down" class="ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-8 lg:mt-0">
+                    <img src="http://static.photos/construction/1200x630/3" alt="Refined Metal Doors Overview" class="rounded-lg shadow-xl">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stock Door Designs -->
+    <div id="product-lines" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center">
+                <div class="order-2 lg:order-1">
+                    <img src="http://static.photos/construction/1200x630/3" alt="Stock Door Designs" class="rounded-lg shadow-xl">
+                </div>
+                <div class="order-1 lg:order-2">
+                    <h3 class="text-3xl font-extrabold text-gray-900 mb-4">Stock Door Designs</h3>
+                    <p class="text-lg text-gray-600 leading-relaxed mb-6">
+                        Our stock door designs are available for immediate delivery, providing quick solutions for standard applications. These doors feature proven designs with excellent performance characteristics and are perfect for projects requiring fast turnaround times.
+                    </p>
+                    <p class="text-lg text-gray-600 leading-relaxed mb-6">
+                        We maintain inventory of our most popular door configurations, including standard sizes, finishes, and hardware options. Perfect for commercial buildings, residential applications, and projects where time is critical.
+                    </p>
+                    <a href="contact.html" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white" style="background-color: #C0C0C0;" onmouseover="this.style.backgroundColor='#A0A0A0'" onmouseout="this.style.backgroundColor='#C0C0C0'">
+                        Get Quote <i data-feather="arrow-right" class="ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Available Stock Doors -->
+    <div class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-gray-900 mb-4">Available Stock</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Our current inventory of doors ready for immediate delivery
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Royal Flow Door -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="h-64 bg-white flex items-center justify-center p-4">
+                        <img src="images/doors/Royal Flow.png" alt="Royal Flow Door" class="w-full h-full object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Royal Flow</h3>
+                        <p class="text-sm text-gray-600">Ornate black wrought iron door with intricate scrollwork design</p>
+                    </div>
+                </div>
+
+                <!-- Vinegate Door -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="h-64 bg-white flex items-center justify-center p-4">
+                        <img src="images/doors/Vinegate.png" alt="Vinegate Door" class="w-full h-full object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Vinegate</h3>
+                        <p class="text-sm text-gray-600">Classic iron door with decorative grille and embossed panel</p>
+                    </div>
+                </div>
+
+                <!-- Gridline Door -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="h-64 bg-white flex items-center justify-center p-4">
+                        <img src="images/doors/Gridline.png" alt="Gridline Door" class="w-full h-full object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Gridline</h3>
+                        <p class="text-sm text-gray-600">Contemporary metal door with clean grid pattern and Refined Metal branding</p>
+                    </div>
+                </div>
+
+                <!-- Clearview Door -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="h-64 bg-white flex items-center justify-center p-4">
+                        <img src="images/doors/Clearview.png" alt="Clearview Door" class="w-full h-full object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Clearview</h3>
+                        <p class="text-sm text-gray-600">Traditional metal door with six-pane glass and raised panel design</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Door Examples Gallery -->
+    <div class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-gray-900 mb-4">Custom Door Examples</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Examples of our previous custom door installations showcasing unique designs and precision engineering
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Example 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="h-64 bg-gray-100 flex items-center justify-center">
+                        <img src="http://static.photos/construction/1200x630/3" alt="Commercial Installation" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Commercial Installation</h3>
+                        <p class="text-sm text-gray-600">Modern office building entrance with custom dimensions</p>
+                    </div>
+                </div>
+
+                <!-- Example 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="h-64 bg-gray-100 flex items-center justify-center">
+                        <img src="http://static.photos/construction/1200x630/3" alt="Residential Application" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Residential Application</h3>
+                        <p class="text-sm text-gray-600">Home entrance with custom security features</p>
+                    </div>
+                </div>
+
+                <!-- Example 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="h-64 bg-gray-100 flex items-center justify-center">
+                        <img src="http://static.photos/construction/1200x630/3" alt="Industrial Facility" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Industrial Facility</h3>
+                        <p class="text-sm text-gray-600">Heavy-duty warehouse entrance with custom specifications</p>
+                    </div>
+                </div>
+
+                <!-- Example 4 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="h-64 bg-gray-100 flex items-center justify-center">
+                        <img src="http://static.photos/construction/1200x630/3" alt="Retail Storefront" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Retail Storefront</h3>
+                        <p class="text-sm text-gray-600">Attractive commercial entrance with custom finish</p>
+                    </div>
+                </div>
+
+                <!-- Example 5 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="h-64 bg-gray-100 flex items-center justify-center">
+                        <img src="http://static.photos/construction/1200x630/3" alt="Multi-Family Building" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Multi-Family Building</h3>
+                        <p class="text-sm text-gray-600">Apartment complex entrance with custom hardware</p>
+                    </div>
+                </div>
+
+                <!-- Example 6 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="h-64 bg-gray-100 flex items-center justify-center">
+                        <img src="http://static.photos/construction/1200x630/3" alt="Custom Design" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Bespoke Design</h3>
+                        <p class="text-sm text-gray-600">Unique architectural door solution</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="bg-gray-700">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+            <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                <span class="block">Ready to order doors?</span>
+                <span class="block text-gray-200">Call us today for a quote.</span>
+            </h2>
+            <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
+                <div class="inline-flex rounded-md shadow">
+                    <a href="tel:+19292357999" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-gray-600 bg-white hover:bg-gray-50">
+                        <i data-feather="phone" class="mr-2"></i> (929) 235-7999
+                    </a>
+                </div>
+                <div class="ml-3 inline-flex rounded-md shadow">
+                    <a href="contact.html" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white" style="background-color: #C0C0C0;" onmouseover="this.style.backgroundColor='#A0A0A0'" onmouseout="this.style.backgroundColor='#C0C0C0'">
+                        <i data-feather="mail" class="mr-2"></i> Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t border-gray-300">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <!-- Quick Links -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase mb-4">Products</h3>
+                    <ul class="space-y-3">
+                        <li><a href="studs.html" class="text-gray-900 hover:text-gray-500">Studs</a></li>
+                        <li><a href="tracks.html" class="text-gray-900 hover:text-gray-500">Tracks</a></li>
+                        <li><a href="joists.html" class="text-gray-900 hover:text-gray-500">Joists</a></li>
+                        <li><a href="decking.html" class="text-gray-900 hover:text-gray-500">Decking</a></li>
+                        <li><a href="doors.html" class="text-gray-900 hover:text-gray-500">Doors</a></li>
+                        <li><a href="railings.html" class="text-gray-900 hover:text-gray-500">Railings</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase mb-4">Company</h3>
+                    <ul class="space-y-3">
+                        <li><a href="about.html" class="text-gray-900 hover:text-gray-500">About Us</a></li>
+                        <li><a href="icces-report.html" class="text-gray-900 hover:text-gray-500">ICCES Report</a></li>
+                        <li><a href="contact.html" class="text-gray-900 hover:text-gray-500">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase mb-4">Resources</h3>
+                    <ul class="space-y-3">
+                        <li><a href="catalogs/door-railings-catalog.pdf" target="_blank" class="text-gray-900 hover:text-gray-500">Door & Railings Catalog</a></li>
+                        <li><a href="catalogs/steel-catalog.pdf" target="_blank" class="text-gray-900 hover:text-gray-500">Steel Catalog</a></li>
+                        <li><a href="privacy-policy.html" class="text-gray-900 hover:text-gray-500">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase mb-4">Contact</h3>
+                    <ul class="space-y-3">
+                        <li class="text-gray-900">15-30 131 St</li>
+                        <li class="text-gray-900">College Point, NY 11356</li>
+                        <li class="text-gray-900">(929) 235-7999</li>
+                        <li class="text-gray-900">info@refined-metal.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Certification Logos -->
+            <div class="border-t border-gray-300 pt-8">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="flex items-center space-x-8 mb-4 md:mb-0">
+                        <!-- Refined Metal Logo -->
+                        <img src="images/rm-logo.png" alt="Refined Metal Logo" class="h-12 w-auto">
+                        <!-- ICCES Logo -->
+                        <img src="images/icces-logo.png" alt="ICCES Logo" class="h-12 w-auto">
+                        <!-- Additional certification logos can be added here -->
+                    </div>
+                    <p class="text-gray-500 text-sm">
+                        &copy; 2025 Refined Metal. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init();
+        feather.replace();
+    </script>
+</body>
+</html>

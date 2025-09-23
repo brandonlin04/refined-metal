@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICCES Report - Refined Metal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        .metallic-gradient {
+            background: linear-gradient(135deg, #C0C0C0 0%, #A8A8A8 25%, #D0D0D0 50%, #B8B8B8 75%, #C8C8C8 100%);
+            box-shadow: 0 8px 32px rgba(192, 192, 192, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+        }
+        .metallic-card {
+            background: linear-gradient(145deg, #C0C0C0 0%, #A8A8A8 30%, #D0D0D0 60%, #B8B8B8 100%);
+            box-shadow: 0 12px 40px rgba(192, 192, 192, 0.4), inset 0 2px 0 rgba(255, 255, 255, 0.3), inset 0 -2px 0 rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .metallic-button {
+            background: linear-gradient(145deg, #C0C0C0 0%, #A8A8A8 50%, #D0D0D0 100%);
+            box-shadow: 0 6px 20px rgba(192, 192, 192, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        .metallic-button:hover {
+            background: linear-gradient(145deg, #D0D0D0 0%, #B8B8B8 50%, #E0E0E0 100%);
+            box-shadow: 0 8px 25px rgba(192, 192, 192, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+        .metallic-icon {
+            background: linear-gradient(145deg, #C0C0C0 0%, #A8A8A8 50%, #D0D0D0 100%);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(192, 192, 192, 0.3);
+        }
+        .metallic-text {
+            color: #2D2D2D;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+        }
+        .metallic-subtext {
+            color: #4A4A4A;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-900 bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gray-300 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <!-- Logo Placeholder -->
+                    <a href="index.html" class="flex-shrink-0 flex items-center mr-8 hover:opacity-80 transition-opacity duration-200">
+                        <img src="images/rm-logo.png" alt="Refined Metal Logo" class="h-12 w-auto">
+                        <span class="ml-3 text-2xl font-bold text-gray-900">Refined Metal</span>
+                    </a>
+                    <!-- Navigation Menu -->
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-6 lg:space-x-8">
+                        <a href="index.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">Home</a>
+                        <a href="about.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">About Us</a>
+                        <a href="studs.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">Studs</a>
+                        <a href="tracks.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">Tracks</a>
+                        <a href="joists.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">Joists</a>
+                        <a href="decking.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">Decking</a>
+                        <a href="doors.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">Doors</a>
+                        <a href="railings.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">Railings</a>
+                        <a href="icces-report.html" class="border-gray-300 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">ICCES Report</a>
+                        <a href="contact.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-gradient">
+        <div class="max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
+                    ICCES Report
+                </h1>
+                <p class="mt-4 text-xl text-gray-500 max-w-3xl mx-auto">
+                    Official ICC-ES evaluation report for Refined Metal products
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ICCES Report Content -->
+    <div class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-gray-600 font-semibold tracking-wide uppercase">Certification</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    ESR-5724 True Copy
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    Download the complete ICC-ES evaluation report for Refined Metal products
+                </p>
+            </div>
+            
+            <div class="mt-10 flex justify-center">
+                <div class="bg-white rounded-lg shadow-lg p-8 max-w-md border border-gray-200">
+                    <div class="text-center">
+                        <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-md bg-gray-100 mb-6">
+                            <img src="images/icces-logo.png" alt="ICCES Logo" class="h-10 w-10 object-contain">
+                        </div>
+                        <h3 class="text-xl font-medium text-gray-900 mb-2">ESR-5724 True Copy</h3>
+                        <p class="text-sm text-gray-500 mb-6">
+                            Official ICC-ES evaluation report documenting the compliance and performance characteristics of Refined Metal products.
+                        </p>
+                        <a href="documents/ESR-5724-True-Copy.pdf" target="_blank" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gray-600 hover:bg-gray-700">
+                            <i data-feather="download" class="mr-2"></i> Download Report
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t border-gray-300">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <!-- Quick Links -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase mb-4">Products</h3>
+                    <ul class="space-y-3">
+                        <li><a href="studs.html" class="text-gray-900 hover:text-gray-500">Studs</a></li>
+                        <li><a href="tracks.html" class="text-gray-900 hover:text-gray-500">Tracks</a></li>
+                        <li><a href="joists.html" class="text-gray-900 hover:text-gray-500">Joists</a></li>
+                        <li><a href="decking.html" class="text-gray-900 hover:text-gray-500">Decking</a></li>
+                        <li><a href="doors.html" class="text-gray-900 hover:text-gray-500">Doors</a></li>
+                        <li><a href="railings.html" class="text-gray-900 hover:text-gray-500">Railings</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase mb-4">Company</h3>
+                    <ul class="space-y-3">
+                        <li><a href="about.html" class="text-gray-900 hover:text-gray-500">About Us</a></li>
+                        <li><a href="icces-report.html" class="text-gray-900 hover:text-gray-500">ICCES Report</a></li>
+                        <li><a href="contact.html" class="text-gray-900 hover:text-gray-500">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase mb-4">Resources</h3>
+                    <ul class="space-y-3">
+                        <li><a href="catalogs/door-railings-catalog.pdf" target="_blank" class="text-gray-900 hover:text-gray-500">Door & Railings Catalog</a></li>
+                        <li><a href="catalogs/steel-catalog.pdf" target="_blank" class="text-gray-900 hover:text-gray-500">Steel Catalog</a></li>
+                        <li><a href="privacy-policy.html" class="text-gray-900 hover:text-gray-500">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase mb-4">Contact</h3>
+                    <ul class="space-y-3">
+                        <li class="text-gray-900">15-30 131 St</li>
+                        <li class="text-gray-900">College Point, NY 11356</li>
+                        <li class="text-gray-900">(929) 235-7999</li>
+                        <li class="text-gray-900">info@refined-metal.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Certification Logos -->
+            <div class="border-t border-gray-300 pt-8">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="flex items-center space-x-8 mb-4 md:mb-0">
+                        <!-- Refined Metal Logo -->
+                        <img src="images/rm-logo.png" alt="Refined Metal Logo" class="h-12 w-auto">
+                        <!-- ICCES Logo -->
+                        <img src="images/icces-logo.png" alt="ICCES Logo" class="h-12 w-auto">
+                        <!-- Additional certification logos can be added here -->
+                    </div>
+                    <p class="text-gray-500 text-sm">
+                        &copy; 2025 Refined Metal. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init();
+        feather.replace();
+    </script>
+</body>
+</html>
