@@ -1,0 +1,16 @@
+{
+  "name": "refined-metal-website",
+  "version": "1.0.0",
+  "description": "Refined Metal website with clean URL routing",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "keywords": ["steel", "construction", "website"],
+  "author": "Refined Metal",
+  "license": "MIT"
+}
