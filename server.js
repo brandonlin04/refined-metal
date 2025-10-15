@@ -41,12 +41,15 @@ app.use(express.static('.')); // Serve static files from current directory
 
 // Email transporter configuration
 const transporter = nodemailer.createTransport({
-  host: 'smtp-mail.outlook.com', // Use Outlook SMTP for custom domains
+  host: 'smtp.office365.com', // Use Office 365 SMTP
   port: 587,
   secure: false, // true for 465, false for other ports
   auth: {
     user: process.env.EMAIL_USER, // Your email
     pass: process.env.EMAIL_PASS  // Your app password
+  },
+  tls: {
+    ciphers: 'SSLv3'
   }
 });
 
@@ -153,7 +156,9 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
     // Send email
     await transporter.sendMail(mailOptions);
 
-    // Send confirmation email to customer
+    // Send confirmation email to customer - COMMENTED OUT FOR NOW
+    // TODO: Implement confirmation emails later when SMTP AUTH is enabled
+    /*
     const confirmationMailOptions = {
       from: process.env.EMAIL_USER,
       to: email,
@@ -191,6 +196,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
     };
 
     await transporter.sendMail(confirmationMailOptions);
+    */
 
     res.json({ 
       success: true, 
