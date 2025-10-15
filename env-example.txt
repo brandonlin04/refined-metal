@@ -1,0 +1,6 @@
+# Email Configuration
+EMAIL_USER=2004blin6@gmail.com
+EMAIL_PASS=bdcrlbwpzwwlpizc
+
+# Server Configuration
+PORT=3000
