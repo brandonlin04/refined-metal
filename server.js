@@ -156,9 +156,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
     // Send email
     await transporter.sendMail(mailOptions);
 
-    // Send confirmation email to customer - COMMENTED OUT FOR NOW
-    // TODO: Implement confirmation emails later when SMTP AUTH is enabled
-    /*
+    // Send confirmation email to customer
     const confirmationMailOptions = {
       from: process.env.EMAIL_USER,
       to: email,
@@ -196,7 +194,6 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
     };
 
     await transporter.sendMail(confirmationMailOptions);
-    */
 
     res.json({ 
       success: true, 
