@@ -41,10 +41,12 @@ app.use(express.static('.')); // Serve static files from current directory
 
 // Email transporter configuration
 const transporter = nodemailer.createTransport({
-  service: 'hotmail', // Use 'hotmail' for Office 365/Outlook
+  host: 'smtp-mail.outlook.com', // Use Outlook SMTP for custom domains
+  port: 587,
+  secure: false, // true for 465, false for other ports
   auth: {
-    user: process.env.EMAIL_USER, // Your Office 365 email
-    pass: process.env.EMAIL_PASS  // Your Office 365 app password
+    user: process.env.EMAIL_USER, // Your email
+    pass: process.env.EMAIL_PASS  // Your app password
   }
 });
 
