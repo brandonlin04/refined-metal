@@ -45,11 +45,12 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false, // true for 465, false for other ports
   auth: {
-    user: process.env.EMAIL_USER, // Your email
-    pass: process.env.EMAIL_PASS  // Your app password
+    user: process.env.EMAIL_USER, // Your Office 365 email
+    pass: process.env.EMAIL_PASS  // Your Office 365 password
   },
   tls: {
-    ciphers: 'SSLv3'
+    ciphers: 'SSLv3',
+    rejectUnauthorized: false
   }
 });
 
@@ -123,7 +124,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
     // Email content
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: '2004blin6@gmail.com', // Your business email
+      to: process.env.EMAIL_USER, // Your business email
       subject: `Contact Form: ${subject || 'General Inquiry'} - ${firstName} ${lastName}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
