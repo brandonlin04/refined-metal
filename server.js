@@ -7,6 +7,9 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Trust proxy for Azure deployment
+app.set('trust proxy', 1);
+
 // Rate limiting to prevent spam
 const contactLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
