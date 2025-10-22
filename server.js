@@ -44,12 +44,12 @@ app.use(express.static('.')); // Serve static files from current directory
 
 // Email transporter configuration
 const transporter = nodemailer.createTransport({
-  host: 'smtp.office365.com', // Use Office 365 SMTP
-  port: 587,
+  host: process.env.SMTP_HOST || 'smtp.office365.com',
+  port: process.env.SMTP_PORT || 587,
   secure: false, // true for 465, false for other ports
   auth: {
-    user: process.env.EMAIL_USER, // Your Office 365 email
-    pass: process.env.EMAIL_PASS  // Your Office 365 password
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
   },
   tls: {
     ciphers: 'SSLv3',
@@ -126,8 +126,8 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
 
     // Email content
     const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: 'info@refined-metal.com', // Your business email
+      from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
+      to: process.env.EMAIL_TO || 'info@refined-metal.com', // Your business email
       subject: `Contact Form: ${subject || 'General Inquiry'} - ${firstName} ${lastName}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
