@@ -126,8 +126,8 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
 
     // Email content
     const mailOptions = {
-      from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
-      to: process.env.EMAIL_TO || 'info@refined-metal.com', // Your business email
+      from: process.env.EMAIL_USER,
+      to: process.env.EMAIL_USER, // Your business email
       subject: `Contact Form: ${subject || 'General Inquiry'} - ${firstName} ${lastName}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -160,9 +160,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
     // Send email
     await transporter.sendMail(mailOptions);
 
-    // Send confirmation email to customer - COMMENTED OUT FOR NOW
-    // TODO: Implement confirmation emails later when SMTP AUTH is enabled
-    /*
+    // Send confirmation email to customer
     const confirmationMailOptions = {
       from: process.env.EMAIL_USER,
       to: email,
@@ -200,7 +198,6 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
     };
 
     await transporter.sendMail(confirmationMailOptions);
-    */
 
     res.json({ 
       success: true, 
