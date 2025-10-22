@@ -298,4 +298,5 @@ app.listen(PORT, () => {
   console.log(`📨 Email test: http://localhost:${PORT}/api/test-email`);
   console.log(`🌐 Environment: ${process.env.NODE_ENV || 'development'}`);
   console.log(`📮 Email User: ${process.env.EMAIL_USER || 'NOT SET'}`);
+  console.log(`🔄 Server restarted at: ${new Date().toISOString()}`);
 });
