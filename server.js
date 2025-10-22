@@ -42,10 +42,10 @@ app.use(cors({
 app.use(express.json({ limit: '10mb' })); // Limit request size
 app.use(express.static('.')); // Serve static files from current directory
 
-// Email transporter configuration
+// Email transporter configuration for Office 365
 const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST || 'smtp.office365.com',
-  port: process.env.SMTP_PORT || 587,
+  host: 'smtp.office365.com',
+  port: 587,
   secure: false, // true for 465, false for other ports
   auth: {
     user: process.env.EMAIL_USER,
@@ -210,8 +210,19 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
       message: error.message,
       code: error.code,
       response: error.response,
-      command: error.command
+      command: error.command,
+      responseCode: error.responseCode
     });
+    
+    // Specific Office 365 error handling
+    if (error.code === 'EAUTH') {
+      console.error('Office 365 Authentication failed. Check EMAIL_USER and EMAIL_PASS.');
+    } else if (error.code === 'EENVELOPE') {
+      console.error('Office 365 envelope error. Check email addresses.');
+    } else if (error.responseCode === 535) {
+      console.error('Office 365 SMTP AUTH is disabled. Enable it in Office 365 admin center.');
+    }
+    
     res.status(500).json({ 
       success: false, 
       message: 'Failed to send message. Please try again or call us directly.',
@@ -225,23 +236,34 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Server is running' });
 });
 
-// Email configuration test endpoint
+// Office 365 email configuration test endpoint
 app.get('/api/test-email', async (req, res) => {
   try {
-    // Test email configuration
+    console.log('Testing Office 365 email configuration...');
+    console.log('EMAIL_USER:', process.env.EMAIL_USER);
+    console.log('EMAIL_PASS:', process.env.EMAIL_PASS ? 'Set' : 'Not set');
+    
+    // Test Office 365 connection
     await transporter.verify();
+    
     res.json({ 
       status: 'OK', 
-      message: 'Email configuration is valid',
-      emailUser: process.env.EMAIL_USER ? 'Set' : 'Not set'
+      message: 'Office 365 email configuration is valid',
+      emailUser: process.env.EMAIL_USER,
+      smtpHost: 'smtp.office365.com',
+      smtpPort: 587
     });
   } catch (error) {
-    console.error('Email configuration test failed:', error);
+    console.error('Office 365 email configuration test failed:', error);
     res.status(500).json({ 
       status: 'ERROR', 
-      message: 'Email configuration test failed',
+      message: 'Office 365 email configuration test failed',
       error: error.message,
-      emailUser: process.env.EMAIL_USER ? 'Set' : 'Not set'
+      errorCode: error.code,
+      responseCode: error.responseCode,
+      emailUser: process.env.EMAIL_USER,
+      smtpHost: 'smtp.office365.com',
+      smtpPort: 587
     });
   }
 });
