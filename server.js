@@ -206,9 +206,16 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
 
   } catch (error) {
     console.error('Error sending email:', error);
+    console.error('Error details:', {
+      message: error.message,
+      code: error.code,
+      response: error.response,
+      command: error.command
+    });
     res.status(500).json({ 
       success: false, 
-      message: 'Failed to send message. Please try again or call us directly.' 
+      message: 'Failed to send message. Please try again or call us directly.',
+      error: process.env.NODE_ENV === 'development' ? error.message : undefined
     });
   }
 });
@@ -216,6 +223,27 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Server is running' });
+});
+
+// Email configuration test endpoint
+app.get('/api/test-email', async (req, res) => {
+  try {
+    // Test email configuration
+    await transporter.verify();
+    res.json({ 
+      status: 'OK', 
+      message: 'Email configuration is valid',
+      emailUser: process.env.EMAIL_USER ? 'Set' : 'Not set'
+    });
+  } catch (error) {
+    console.error('Email configuration test failed:', error);
+    res.status(500).json({ 
+      status: 'ERROR', 
+      message: 'Email configuration test failed',
+      error: error.message,
+      emailUser: process.env.EMAIL_USER ? 'Set' : 'Not set'
+    });
+  }
 });
 
 app.listen(PORT, () => {
