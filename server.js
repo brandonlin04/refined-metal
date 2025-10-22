@@ -35,7 +35,7 @@ app.use((req, res, next) => {
 // Middleware
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://yourdomain.com', 'https://www.yourdomain.com'] 
+    ? ['https://refined-metal.com', 'https://www.refined-metal.com', 'https://refined-metal-e0etbtd6dtddahfu.centralus-01.azurewebsites.net'] 
     : true,
   credentials: true
 }));
@@ -43,12 +43,12 @@ app.use(express.json({ limit: '10mb' })); // Limit request size
 app.use(express.static('.')); // Serve static files from current directory
 
 // Email transporter configuration for Office 365
-const transporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransporter({
   host: 'smtp.office365.com',
   port: 587,
   secure: false, // true for 465, false for other ports
   auth: {
-    user: process.env.EMAIL_USER,
+    user: process.env.EMAIL_USER, // info@refined-metal.com
     pass: process.env.EMAIL_PASS
   },
   tls: {
@@ -112,6 +112,12 @@ function validateInput(data) {
 // Contact form endpoint
 app.post('/api/contact', contactLimiter, async (req, res) => {
   try {
+    console.log('Contact form submission received:', {
+      email: req.body.email,
+      name: `${req.body.firstName} ${req.body.lastName}`,
+      subject: req.body.subject
+    });
+    
     // Validate and sanitize input
     const { errors, sanitized } = validateInput(req.body);
     
@@ -158,9 +164,12 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
     };
 
     // Send email
+    console.log('Sending contact form email to:', process.env.EMAIL_USER);
     await transporter.sendMail(mailOptions);
+    console.log('Contact form email sent successfully');
 
     // Send confirmation email to customer
+    console.log('Sending confirmation email to:', email);
     const confirmationMailOptions = {
       from: process.env.EMAIL_USER,
       to: email,
@@ -198,6 +207,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
     };
 
     await transporter.sendMail(confirmationMailOptions);
+    console.log('Confirmation email sent successfully');
 
     res.json({ 
       success: true, 
@@ -268,7 +278,22 @@ app.get('/api/test-email', async (req, res) => {
   }
 });
 
+// Catch-all route for any other requests
+app.get('*', (req, res) => {
+  res.json({ 
+    status: 'OK', 
+    message: 'Refined Metal API Server is running',
+    endpoints: {
+      contact: '/api/contact',
+      health: '/api/health',
+      testEmail: '/api/test-email'
+    }
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   console.log(`Contact form endpoint: http://localhost:${PORT}/api/contact`);
+  console.log(`Health check: http://localhost:${PORT}/api/health`);
+  console.log(`Email test: http://localhost:${PORT}/api/test-email`);
 });
