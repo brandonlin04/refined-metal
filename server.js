@@ -292,8 +292,10 @@ app.get('*', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-  console.log(`Contact form endpoint: http://localhost:${PORT}/api/contact`);
-  console.log(`Health check: http://localhost:${PORT}/api/health`);
-  console.log(`Email test: http://localhost:${PORT}/api/test-email`);
+  console.log(`🚀 Refined Metal Server is running on port ${PORT}`);
+  console.log(`📧 Contact form endpoint: http://localhost:${PORT}/api/contact`);
+  console.log(`❤️ Health check: http://localhost:${PORT}/api/health`);
+  console.log(`📨 Email test: http://localhost:${PORT}/api/test-email`);
+  console.log(`🌐 Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`📮 Email User: ${process.env.EMAIL_USER || 'NOT SET'}`);
 });
