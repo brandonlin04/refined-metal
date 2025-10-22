@@ -43,7 +43,7 @@ app.use(express.json({ limit: '10mb' })); // Limit request size
 app.use(express.static('.')); // Serve static files from current directory
 
 // Email transporter configuration for Office 365
-const transporter = nodemailer.createTransporter({
+const transporter = nodemailer.createTransport({
   host: 'smtp.office365.com',
   port: 587,
   secure: false, // true for 465, false for other ports
