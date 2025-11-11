@@ -3,78 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Refined Metal - Steel Solutions</title>
+    <title>Refined Metal - Industrial Steel Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        .hero-gradient {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        /* Industrial Theme Variables */
+        :root {
+            --primary-red: #dc2626;
+            --dark-gray: #1f2937;
+            --medium-gray: #374151;
+            --light-gray: #6b7280;
+            --bg-dark: #111827;
+            --bg-light: #f9fafb;
         }
+        
+        /* Modern Typography */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+        }
+        
+        .font-display {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        /* Ensure consistent heading font across pages */
+        h1, h2, h3, .hero-title, .section-title, .card-title {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        /* Industrial Hero Gradient */
+        .hero-gradient {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 50%, #374151 100%);
+        }
+        
+        /* Modern Card Hover Effects */
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
         
         /* Enhanced Typography */
         .hero-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 900;
-            letter-spacing: -0.02em;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
             line-height: 1.1;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
         
         .hero-subtitle {
-            font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
             font-weight: 400;
             line-height: 1.6;
             letter-spacing: -0.01em;
+            color: #f3f4f6;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
         }
         
         .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 800;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
             letter-spacing: -0.02em;
             line-height: 1.2;
+            color: var(--dark-gray);
         }
         
         .section-subtitle {
-            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-size: clamp(1.125rem, 2.5vw, 1.5rem);
             font-weight: 500;
             line-height: 1.5;
+            color: var(--light-gray);
         }
         
         .card-title {
-            font-size: 1.25rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
             font-weight: 700;
             letter-spacing: -0.01em;
         }
         
         .card-description {
-            font-size: 0.95rem;
+            font-size: 1rem;
             line-height: 1.6;
             font-weight: 400;
+            color: var(--light-gray);
         }
         
-        /* Enhanced Gradients */
+        /* Industrial Gradients */
         .hero-enhanced {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+            background: linear-gradient(135deg, #1f2937 0%, #111827 50%, #374151 100%);
         }
         
         .section-enhanced {
-            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+            background: linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
         }
         
         .catalog-enhanced {
-            background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+            background: linear-gradient(180deg, #f3f4f6 0%, #e5e7eb 100%);
+        }
+        
+        /* Modern Button Styles */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-red) 0%, #b91c1c 100%);
+            color: white;
+            font-weight: 600;
+            padding: 0.875rem 2rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px 0 rgba(220, 38, 38, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(220, 38, 38, 0.4);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: var(--dark-gray);
+            font-weight: 600;
+            padding: 0.875rem 2rem;
+            border-radius: 0.5rem;
+            border: 2px solid var(--dark-gray);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--dark-gray);
+            color: white;
+            transform: translateY(-2px);
         }
         
         /* Enhanced Cards */
         .catalog-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        
+        /* Dropdown Menu Styles */
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.2s ease-in-out;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            z-index: 9999;
+            min-width: 12rem;
+            padding: 0.5rem 0;
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #374151;
+            text-decoration: none;
+            transition: background-color 0.15s ease-in-out;
+        }
+        
+        .dropdown-menu a:hover {
+            background-color: #f3f4f6;
+            color: #111827;
         }
         
         .catalog-card:hover {
@@ -116,50 +229,95 @@
 </head>
 <body class="font-sans antialiased text-gray-900 bg-gray-50">
     <!-- Navigation -->
-    <nav class="bg-white border-b border-gray-300 shadow-lg">
+    <nav class="bg-white border-b border-gray-200 shadow-xl backdrop-blur-sm" style="position: relative; z-index: 10000;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20">
                 <div class="flex items-center">
-                    <!-- Logo Placeholder -->
+                    <!-- Logo -->
                     <a href="index.html" class="flex-shrink-0 flex items-center mr-8 hover:opacity-80 transition-opacity duration-200">
-                        <img src="images/rm-logo.png" alt="Refined Metal Logo" class="h-12 w-auto">
+                        <img src="images/rm-logo.png" alt="Refined Metal Logo" class="h-14 w-auto">
                     </a>
                     <!-- Navigation Menu -->
-                    <div class="hidden sm:ml-6 sm:flex sm:space-x-6 lg:space-x-8">
-                        <a href="index.html" class="border-gray-300 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">Home</a>
-                        <a href="about.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">About Us</a>
-                        <a href="studs.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">Studs</a>
-                        <a href="tracks.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">Tracks</a>
-                        <a href="joists.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">Joists</a>
-                        <a href="decking.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">Decking</a>
-                        <a href="doors.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">Doors</a>
-                        <a href="railings.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">Railings</a>
-                        <a href="icces-report.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">ICCES Report</a>
-                        <a href="contact.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-xs lg:text-sm font-medium whitespace-nowrap">Contact Us</a>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8 lg:space-x-10">
+                        <a href="index.html" class="border-red-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-semibold whitespace-nowrap">Home</a>
+                        <a href="about.html" class="border-transparent text-gray-600 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap transition-colors duration-200">About Us</a>
+                        
+                        <!-- Structural Products Dropdown -->
+                        <div class="relative dropdown">
+                            <button class="border-transparent text-gray-600 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap transition-colors duration-200">
+                                Structural Products
+                                <svg class="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="studs.html">Studs</a>
+                                <a href="tracks.html">Tracks</a>
+                                <a href="joists.html">Joists</a>
+                                <a href="decking.html">Decking</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Architectural Products Dropdown -->
+                        <div class="relative dropdown">
+                            <button class="border-transparent text-gray-600 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap transition-colors duration-200">
+                                Architectural Products
+                                <svg class="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="doors.html">Doors</a>
+                                <a href="railings.html">Railings</a>
+                            </div>
+                        </div>
+                        
+                        <a href="icces-report.html" class="border-transparent text-gray-600 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap transition-colors duration-200">ICCES Report</a>
+                        <a href="contact.html" class="border-transparent text-gray-600 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap transition-colors duration-200">Contact Us</a>
                     </div>
+                </div>
+                
+                <!-- CTA Button -->
+                <div class="flex items-center">
+                    <a href="contact.html" class="btn-primary inline-flex items-center px-6 py-3 text-sm font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300" style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); color: white; border: none;">
+                        GET A QUOTE
+                        <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <div class="hero-enhanced">
-        <div class="max-w-7xl mx-auto section-padding px-4 sm:px-6 lg:px-8">
+    <div class="relative hero-enhanced overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+            <div class="absolute inset-0 bg-black opacity-40"></div>
+        </div>
+        
+        <!-- Content -->
+        <div class="relative max-w-7xl mx-auto section-padding px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <h1 class="hero-title text-gray-900">
+                <h1 class="hero-title mb-8">
                     Strength you can trust,<br>
-                    <span style="color: #C0C0C0;">precision you can see.</span>
+                    <span class="text-red-500">precision you can see.</span>
                 </h1>
-                <p class="hero-subtitle text-gray-600 max-w-4xl mx-auto mt-8">
+                <p class="hero-subtitle max-w-4xl mx-auto mb-12">
                     At Refined Metal, our mission is to deliver steel solutions that shape stronger, safer, and smarter construction. From precision roll-formed framing materials to custom fabrication, doors, and railings — we provide a complete range of products to meet the needs of builders and developers.
                 </p>
-                <div class="mt-12">
-                    <a href="contact.html" class="btn-primary inline-flex items-center px-8 py-4 border border-transparent text-lg font-semibold rounded-xl text-white">
-                        <i data-feather="phone" class="mr-3"></i> Get Started Today
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="contact.html" class="btn-primary inline-flex items-center px-8 py-4 text-lg font-semibold rounded-lg" style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); color: white; border: none;">
+                        <svg class="mr-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                        </svg>
+                        Get Started Today
                     </a>
                 </div>
             </div>
         </div>
+        
     </div>
 
     <!-- About Us Section -->
@@ -167,16 +325,19 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center">
                 <div>
-                    <h2 class="section-title text-gray-900">About Refined Metal</h2>
-                    <p class="section-subtitle text-gray-600 mt-6">
+                    <h2 class="section-title">About Refined Metal</h2>
+                    <p class="section-subtitle mt-6">
                         Refined Metal is a New York–based manufacturer delivering high-quality steel products at competitive prices. We specialize in roll-formed studs, tracks, joists, and decking, while also offering durable doors, railings, and custom solutions.
                     </p>
                     <p class="text-gray-500 mt-6 leading-relaxed">
                         By cutting out the middleman and serving contractors and distributors directly, we provide faster lead times, flexible options, and the reliability you need to keep projects moving forward.
                     </p>
                     <div class="mt-10">
-                        <a href="about.html" class="btn-primary inline-flex items-center px-6 py-3 border border-transparent text-base font-semibold rounded-lg text-white">
-                            Learn More <i data-feather="arrow-right" class="ml-2"></i>
+                        <a href="about.html" class="btn-primary inline-flex items-center px-6 py-3 text-base font-semibold rounded-lg" style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); color: white; border: none;">
+                            Learn More About Us
+                            <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            </svg>
                         </a>
                     </div>
                 </div>
@@ -194,8 +355,8 @@
     <div class="catalog-enhanced section-padding">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <h2 class="section-title text-gray-900">Our Product Categories</h2>
-                <p class="section-subtitle text-gray-600 mt-6 max-w-3xl mx-auto">
+                <h2 class="section-title">Our Product Categories</h2>
+                <p class="section-subtitle mt-6 max-w-3xl mx-auto">
                     Complete steel solutions for construction and architectural applications
                 </p>
             </div>
@@ -211,9 +372,11 @@
                         <div class="p-8">
                             <h3 class="card-title text-gray-900">Studs</h3>
                             <p class="card-description text-gray-600 mt-3">Precision-engineered cold-formed steel framing members for structural and non-structural applications.</p>
-                            <div class="mt-6 flex items-center font-semibold" style="color: #C0C0C0;">
+                            <div class="mt-6 flex items-center font-semibold text-red-600">
                                 <span>View Products</span>
-                                <i data-feather="arrow-right" class="ml-2"></i>
+                                <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                </svg>
                             </div>
                         </div>
                     </a>
@@ -221,15 +384,17 @@
                     <!-- Tracks -->
                     <a href="tracks.html" class="product-card transition duration-300 ease-in-out rounded-2xl overflow-hidden shadow-lg bg-white">
                         <div class="h-56 bg-gray-100 flex items-center justify-center relative overflow-hidden">
-                            <img src="http://static.photos/construction/640x360/2" alt="Tracks" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <img src="http://static.photos/construction/640x360/4" alt="Tracks" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                         </div>
                         <div class="p-8">
                             <h3 class="card-title text-gray-900">Tracks</h3>
                             <p class="card-description text-gray-600 mt-3">Precision-engineered tracks designed to complement our stud systems for various applications.</p>
-                            <div class="mt-6 flex items-center font-semibold" style="color: #C0C0C0;">
+                            <div class="mt-6 flex items-center font-semibold text-red-600">
                                 <span>View Products</span>
-                                <i data-feather="arrow-right" class="ml-2"></i>
+                                <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                </svg>
                             </div>
                         </div>
                     </a>
@@ -237,15 +402,17 @@
                     <!-- Joists -->
                     <a href="joists.html" class="product-card transition duration-300 ease-in-out rounded-2xl overflow-hidden shadow-lg bg-white">
                         <div class="h-56 bg-gray-100 flex items-center justify-center relative overflow-hidden">
-                            <img src="http://static.photos/construction/640x360/4" alt="Joists" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                            <img src="http://static.photos/construction/640x360/5" alt="Joists" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                         </div>
                         <div class="p-8">
                             <h3 class="card-title text-gray-900">Joists</h3>
-                            <p class="card-description text-gray-600 mt-3">Structural support for floors and roofs in modern construction applications.</p>
-                            <div class="mt-6 flex items-center font-semibold" style="color: #C0C0C0;">
+                            <p class="card-description text-gray-600 mt-3">Structural support for floors and roofs in modern construction applications.<br><br></p>
+                            <div class="mt-6 flex items-center font-semibold text-red-600">
                                 <span>View Products</span>
-                                <i data-feather="arrow-right" class="ml-2"></i>
+                                <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                </svg>
                             </div>
                         </div>
                     </a>
@@ -259,9 +426,11 @@
                         <div class="p-8">
                             <h3 class="card-title text-gray-900">Decking</h3>
                             <p class="card-description text-gray-600 mt-3">Durable, low-maintenance decking solutions for residential and commercial applications.</p>
-                            <div class="mt-6 flex items-center font-semibold" style="color: #C0C0C0;">
+                            <div class="mt-6 flex items-center font-semibold text-red-600">
                                 <span>View Products</span>
-                                <i data-feather="arrow-right" class="ml-2"></i>
+                                <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                </svg>
                             </div>
                         </div>
                     </a>
@@ -274,10 +443,12 @@
                         </div>
                         <div class="p-8">
                             <h3 class="card-title text-gray-900">Doors</h3>
-                            <p class="card-description text-gray-600 mt-3">High-quality aluminum doors for residential and commercial applications.</p>
-                            <div class="mt-6 flex items-center font-semibold" style="color: #C0C0C0;">
+                            <p class="card-description text-gray-600 mt-3">High-quality aluminum doors for residential and commercial applications.<br><br></p>
+                            <div class="mt-6 flex items-center font-semibold text-red-600">
                                 <span>View Products</span>
-                                <i data-feather="arrow-right" class="ml-2"></i>
+                                <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                </svg>
                             </div>
                         </div>
                     </a>
@@ -290,10 +461,12 @@
                         </div>
                         <div class="p-8">
                             <h3 class="card-title text-gray-900">Railings</h3>
-                            <p class="card-description text-gray-600 mt-3">High-quality aluminum railings for safety and aesthetic appeal.</p>
-                            <div class="mt-6 flex items-center font-semibold" style="color: #C0C0C0;">
+                            <p class="card-description text-gray-600 mt-3">High-quality aluminum railings for safety and aesthetic appeal.<br><br></p>
+                            <div class="mt-6 flex items-center font-semibold text-red-600">
                                 <span>View Products</span>
-                                <i data-feather="arrow-right" class="ml-2"></i>
+                                <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                </svg>
                             </div>
                         </div>
                     </a>
@@ -329,7 +502,7 @@
                                 </div>
                             </div>
                             <div class="mt-8">
-                                <a href="catalogs/door-railings-catalog.pdf" target="_blank" class="btn-primary inline-flex items-center px-6 py-3 border border-transparent text-base font-semibold rounded-lg text-white w-full justify-center">
+                                <a href="catalogs/door-railings-catalog.pdf" target="_blank" class="btn-primary inline-flex items-center px-6 py-3 border border-transparent text-base font-semibold rounded-lg text-white w-full justify-center" style="background-color: #C0C0C0;" onmouseover="this.style.backgroundColor='#A0A0A0'" onmouseout="this.style.backgroundColor='#C0C0C0'">
                                     <i data-feather="download" class="mr-3"></i> Download PDF
                                 </a>
                             </div>
@@ -346,12 +519,12 @@
                                     </div>
                                 </div>
                                 <div class="ml-6">
-                                    <h3 class="card-title text-gray-900">Steel Catalog</h3>
+                                    <h3 class="card-title text-gray-900">Steel <br>Catalog</h3>
                                     <p class="card-description text-gray-600 mt-2">Complete catalog of our steel framing products</p>
                                 </div>
                             </div>
                             <div class="mt-8">
-                                <a href="catalogs/steel-catalog.pdf" target="_blank" class="btn-primary inline-flex items-center px-6 py-3 border border-transparent text-base font-semibold rounded-lg text-white w-full justify-center">
+                                <a href="catalogs/steel-catalog.pdf" target="_blank" class="btn-primary inline-flex items-center px-6 py-3 border border-transparent text-base font-semibold rounded-lg text-white w-full justify-center" style="background-color: #C0C0C0;" onmouseover="this.style.backgroundColor='#A0A0A0'" onmouseout="this.style.backgroundColor='#C0C0C0'">
                                     <i data-feather="download" class="mr-3"></i> Download PDF
                                 </a>
                             </div>
@@ -373,7 +546,7 @@
                                 </div>
                             </div>
                             <div class="mt-8">
-                                <a href="catalogs/product-identification.pdf" target="_blank" class="btn-primary inline-flex items-center px-6 py-3 border border-transparent text-base font-semibold rounded-lg text-white w-full justify-center">
+                                <a href="catalogs/product-identification.pdf" target="_blank" class="btn-primary inline-flex items-center px-6 py-3 border border-transparent text-base font-semibold rounded-lg text-white w-full justify-center" style="background-color: #C0C0C0;" onmouseover="this.style.backgroundColor='#A0A0A0'" onmouseout="this.style.backgroundColor='#C0C0C0'">
                                     <i data-feather="download" class="mr-3"></i> Download PDF
                                 </a>
                             </div>
@@ -398,7 +571,7 @@
                     <a href="tel:+19292357999" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-semibold rounded-xl text-gray-900 bg-white hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl">
                         <i data-feather="phone" class="mr-3"></i> (929) 235-7999
                     </a>
-                    <a href="contact.html" class="btn-primary inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-semibold rounded-xl text-white">
+                    <a href="contact.html" class="btn-primary inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-semibold rounded-xl text-white" style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); border: none;">
                         <i data-feather="mail" class="mr-3"></i> Contact Us
                     </a>
                 </div>
