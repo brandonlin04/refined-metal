@@ -33,9 +33,32 @@
             font-family: 'Space Grotesk', sans-serif;
         }
         
-        /* Ensure consistent heading font across pages */
-        h1, h2, h3, .hero-title, .section-title, .card-title {
-            font-family: 'Space Grotesk', sans-serif;
+        /* Ensure consistent heading font across pages - Maximum specificity */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif !important;
+        }
+        
+        .hero-title, .section-title, .card-title {
+            font-family: 'Space Grotesk', sans-serif !important;
+        }
+        
+        /* Ensure all headings use Space Grotesk regardless of Tailwind classes */
+        h1.text-3xl, h1.text-4xl, h1.text-5xl, h1.text-6xl,
+        h2.text-3xl, h2.text-4xl, h2.text-5xl, h2.text-6xl,
+        h3.text-3xl, h3.text-4xl, h3.text-5xl, h3.text-6xl {
+            font-family: 'Space Grotesk', sans-serif !important;
+        }
+        
+        /* Target section-title class specifically with all possible combinations */
+        h2.section-title, h1.section-title, h3.section-title {
+            font-family: 'Space Grotesk', sans-serif !important;
+        }
+        
+        /* Override any Tailwind font utilities on headings */
+        h1.font-sans, h2.font-sans, h3.font-sans,
+        h1.font-serif, h2.font-serif, h3.font-serif,
+        h1.font-mono, h2.font-mono, h3.font-mono {
+            font-family: 'Space Grotesk', sans-serif !important;
         }
         
         /* Industrial Hero Gradient */
@@ -183,6 +206,9 @@
             color: #374151;
             text-decoration: none;
             transition: background-color 0.15s ease-in-out;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 400;
         }
         
         .dropdown-menu a:hover {
@@ -226,6 +252,26 @@
             }
         }
     </style>
+    
+    <!-- Final font override to ensure Space Grotesk is applied after Tailwind -->
+    <style>
+        /* Force Space Grotesk on all headings - highest priority */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif !important;
+        }
+        
+        /* Force Space Grotesk on all heading classes */
+        .section-title, .hero-title, .card-title, h1.section-title, h2.section-title, h3.section-title {
+            font-family: 'Space Grotesk', sans-serif !important;
+        }
+        
+        /* Override any Tailwind-generated font classes on headings */
+        h1.font-sans, h2.font-sans, h3.font-sans, h4.font-sans, h5.font-sans, h6.font-sans,
+        h1.font-serif, h2.font-serif, h3.font-serif,
+        h1.font-mono, h2.font-mono, h3.font-mono {
+            font-family: 'Space Grotesk', sans-serif !important;
+        }
+    </style>
 </head>
 <body class="font-sans antialiased text-gray-900 bg-gray-50">
     <!-- Navigation -->
@@ -235,17 +281,17 @@
                 <div class="flex items-center">
                     <!-- Logo -->
                     <a href="index.html" class="flex-shrink-0 flex items-center mr-8 hover:opacity-80 transition-opacity duration-200">
-                        <img src="images/rm-logo.png" alt="Refined Metal Logo" class="h-14 w-auto">
+                        <img src="images/common/rm-logo.png" alt="Refined Metal Logo" class="h-14 w-auto">
                     </a>
                     <!-- Navigation Menu -->
                     <div class="hidden sm:ml-6 sm:flex sm:space-x-8 lg:space-x-10">
                         <a href="index.html" class="border-red-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-semibold whitespace-nowrap">Home</a>
                         <a href="about.html" class="border-transparent text-gray-600 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap transition-colors duration-200">About Us</a>
                         
-                        <!-- Structural Products Dropdown -->
+                        <!-- Smart Products Dropdown -->
                         <div class="relative dropdown">
                             <button class="border-transparent text-gray-600 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap transition-colors duration-200">
-                                Structural Products
+                                Smart Products
                                 <svg class="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                                 </svg>
@@ -365,13 +411,12 @@
                 <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                     <!-- Studs -->
                     <a href="studs.html" class="product-card transition duration-300 ease-in-out rounded-2xl overflow-hidden shadow-lg bg-white">
-                        <div class="h-56 bg-gray-100 flex items-center justify-center relative overflow-hidden">
-                            <img src="http://static.photos/construction/640x360/3" alt="Studs" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                        <div class="h-56 bg-white flex items-center justify-center relative overflow-hidden">
+                            <img src="images/index/studs.png" alt="Studs" class="w-full h-full object-contain p-4 transition-transform duration-300 hover:scale-105">
                         </div>
                         <div class="p-8">
                             <h3 class="card-title text-gray-900">Studs</h3>
-                            <p class="card-description text-gray-600 mt-3">Precision-engineered cold-formed steel framing members for structural and non-structural applications.</p>
+                            <p class="card-description text-gray-600 mt-3">Precision-engineered cold-formed steel framing members for smart and drywall applications.</p>
                             <div class="mt-6 flex items-center font-semibold text-red-600">
                                 <span>View Products</span>
                                 <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -383,9 +428,8 @@
 
                     <!-- Tracks -->
                     <a href="tracks.html" class="product-card transition duration-300 ease-in-out rounded-2xl overflow-hidden shadow-lg bg-white">
-                        <div class="h-56 bg-gray-100 flex items-center justify-center relative overflow-hidden">
-                            <img src="http://static.photos/construction/640x360/4" alt="Tracks" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                        <div class="h-56 bg-white flex items-center justify-center relative overflow-hidden">
+                            <img src="images/index/tracks.png" alt="Tracks" class="w-full h-full object-contain p-4 transition-transform duration-300 hover:scale-105">
                         </div>
                         <div class="p-8">
                             <h3 class="card-title text-gray-900">Tracks</h3>
@@ -401,13 +445,12 @@
 
                     <!-- Joists -->
                     <a href="joists.html" class="product-card transition duration-300 ease-in-out rounded-2xl overflow-hidden shadow-lg bg-white">
-                        <div class="h-56 bg-gray-100 flex items-center justify-center relative overflow-hidden">
-                            <img src="http://static.photos/construction/640x360/5" alt="Joists" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                        <div class="h-56 bg-white flex items-center justify-center relative overflow-hidden">
+                            <img src="images/index/joists.png" alt="Joists" class="w-full h-full object-contain p-4 transition-transform duration-300 hover:scale-105">
                         </div>
                         <div class="p-8">
                             <h3 class="card-title text-gray-900">Joists</h3>
-                            <p class="card-description text-gray-600 mt-3">Structural support for floors and roofs in modern construction applications.<br><br></p>
+                            <p class="card-description text-gray-600 mt-3">Smart support for floors and roofs in modern construction applications.<br><br></p>
                             <div class="mt-6 flex items-center font-semibold text-red-600">
                                 <span>View Products</span>
                                 <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -419,9 +462,8 @@
 
                     <!-- Decking -->
                     <a href="decking.html" class="product-card transition duration-300 ease-in-out rounded-2xl overflow-hidden shadow-lg bg-white">
-                        <div class="h-56 bg-gray-100 flex items-center justify-center relative overflow-hidden">
-                            <img src="http://static.photos/outdoor/640x360/1" alt="Decking" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                        <div class="h-56 bg-white flex items-center justify-center relative overflow-hidden">
+                            <img src="images/index/decking.png" alt="Decking" class="w-full h-full object-contain p-4 transition-transform duration-300 hover:scale-105">
                         </div>
                         <div class="p-8">
                             <h3 class="card-title text-gray-900">Decking</h3>
@@ -437,9 +479,8 @@
 
                     <!-- Doors -->
                     <a href="doors.html" class="product-card transition duration-300 ease-in-out rounded-2xl overflow-hidden shadow-lg bg-white">
-                        <div class="h-56 bg-gray-100 flex items-center justify-center relative overflow-hidden">
-                            <img src="http://static.photos/construction/640x360/5" alt="Doors" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                        <div class="h-56 bg-white flex items-center justify-center relative overflow-hidden">
+                            <img src="images/index/doors.png" alt="Doors" class="w-full h-full object-contain p-4 transition-transform duration-300 hover:scale-105">
                         </div>
                         <div class="p-8">
                             <h3 class="card-title text-gray-900">Doors</h3>
@@ -455,9 +496,8 @@
 
                     <!-- Railings -->
                     <a href="railings.html" class="product-card transition duration-300 ease-in-out rounded-2xl overflow-hidden shadow-lg bg-white">
-                        <div class="h-56 bg-gray-100 flex items-center justify-center relative overflow-hidden">
-                            <img src="http://static.photos/outdoor/640x360/2" alt="Railings" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                        <div class="h-56 bg-white flex items-center justify-center relative overflow-hidden">
+                            <img src="images/index/railings.png" alt="Railings" class="w-full h-full object-contain p-4 transition-transform duration-300 hover:scale-105">
                         </div>
                         <div class="p-8">
                             <h3 class="card-title text-gray-900">Railings</h3>
@@ -630,7 +670,7 @@
                         <!-- Refined Metal Logo -->
                         <img src="images/rm-logo.png" alt="Refined Metal Logo" class="h-12 w-auto">
                         <!-- ICCES Logo -->
-                        <img src="images/icces-logo.png" alt="ICCES Logo" class="h-12 w-auto">
+                        <img src="images/common/icces-logo.png" alt="ICCES Logo" class="h-12 w-auto">
                         <!-- Additional certification logos can be added here -->
                     </div>
                     <p class="text-gray-500 text-sm">

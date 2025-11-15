@@ -33,9 +33,32 @@
             font-family: 'Space Grotesk', sans-serif;
         }
         
-        /* Ensure consistent heading font across pages */
-        h1, h2, h3, .hero-title, .section-title, .card-title {
-            font-family: 'Space Grotesk', sans-serif;
+        /* Ensure consistent heading font across pages - Maximum specificity */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif !important;
+        }
+        
+        .hero-title, .section-title, .card-title {
+            font-family: 'Space Grotesk', sans-serif !important;
+        }
+        
+        /* Ensure all headings use Space Grotesk regardless of Tailwind classes */
+        h1.text-3xl, h1.text-4xl, h1.text-5xl, h1.text-6xl,
+        h2.text-3xl, h2.text-4xl, h2.text-5xl, h2.text-6xl,
+        h3.text-3xl, h3.text-4xl, h3.text-5xl, h3.text-6xl {
+            font-family: 'Space Grotesk', sans-serif !important;
+        }
+        
+        /* Target section-title class specifically with all possible combinations */
+        h2.section-title, h1.section-title, h3.section-title {
+            font-family: 'Space Grotesk', sans-serif !important;
+        }
+        
+        /* Override any Tailwind font utilities on headings */
+        h1.font-sans, h2.font-sans, h3.font-sans,
+        h1.font-serif, h2.font-serif, h3.font-serif,
+        h1.font-mono, h2.font-mono, h3.font-mono {
+            font-family: 'Space Grotesk', sans-serif !important;
         }
         
         .hero-gradient {
@@ -111,11 +134,34 @@
             color: #374151;
             text-decoration: none;
             transition: background-color 0.15s ease-in-out;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 400;
         }
         
         .dropdown-menu a:hover {
             background-color: #f3f4f6;
             color: #111827;
+        }
+    </style>
+    
+    <!-- Final font override to ensure Space Grotesk is applied after Tailwind -->
+    <style>
+        /* Force Space Grotesk on all headings - highest priority */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif !important;
+        }
+        
+        /* Force Space Grotesk on all heading classes */
+        .section-title, .hero-title, .card-title, h1.section-title, h2.section-title, h3.section-title {
+            font-family: 'Space Grotesk', sans-serif !important;
+        }
+        
+        /* Override any Tailwind-generated font classes on headings */
+        h1.font-sans, h2.font-sans, h3.font-sans, h4.font-sans, h5.font-sans, h6.font-sans,
+        h1.font-serif, h2.font-serif, h3.font-serif,
+        h1.font-mono, h2.font-mono, h3.font-mono {
+            font-family: 'Space Grotesk', sans-serif !important;
         }
     </style>
 </head>
@@ -127,17 +173,17 @@
                 <div class="flex items-center">
                     <!-- Logo -->
                     <a href="index.html" class="flex-shrink-0 flex items-center mr-8 hover:opacity-80 transition-opacity duration-200">
-                        <img src="images/rm-logo.png" alt="Refined Metal Logo" class="h-14 w-auto">
+                        <img src="images/common/rm-logo.png" alt="Refined Metal Logo" class="h-14 w-auto">
                     </a>
                     <!-- Navigation Menu -->
                     <div class="hidden sm:ml-6 sm:flex sm:space-x-8 lg:space-x-10">
                         <a href="index.html" class="border-transparent text-gray-600 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap transition-colors duration-200">Home</a>
                         <a href="about.html" class="border-transparent text-gray-600 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap transition-colors duration-200">About Us</a>
                         
-                        <!-- Structural Products Dropdown -->
+                        <!-- Smart Products Dropdown -->
                         <div class="relative group">
                             <button class="border-red-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-semibold whitespace-nowrap">
-                                Structural Products
+                                Smart Products
                                 <svg class="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                                 </svg>
@@ -211,32 +257,32 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center">
                 <div>
-                    <h2 class="section-title mb-6">Refined Metal Smart Studs</h2>
+                    <h2 class="text-4xl font-extrabold text-gray-900 mb-6">Refined Metal Smart Studs</h2>
                     <p class="text-lg text-gray-600 leading-relaxed mb-6">
-                        Refined Metal Smart Studs are precision-engineered cold-formed steel framing members designed for both structural and non-structural applications. Manufactured under strict ICC-ES quality control programs, our studs comply with the 2024 and 2021 IBC/IRC requirements, ensuring reliability in residential, commercial, and industrial construction.
+                        Refined Metal Smart Studs are precision-engineered cold-formed steel framing members designed for both smart and drywall applications. Manufactured under strict ICC-ES quality control programs, our studs comply with the 2024 and 2021 IBC/IRC requirements, ensuring reliability in residential, commercial, and industrial construction.
                     </p>
                     <p class="text-lg text-gray-600 leading-relaxed mb-8">
                         Our studs are available in multiple gauges, web depths, and flange sizes to meet project-specific load demands. With pre-punched knockout options for electrical, plumbing, and mechanical runs, Refined Metal studs deliver both strength and efficiency on the jobsite. Produced from galvanized steel coils, our products exceed ASTM A1003 and A653 requirements, providing excellent corrosion resistance and long-term durability.
                     </p>
                 </div>
                 <div class="mt-8 lg:mt-0">
-                    <img src="http://static.photos/construction/1200x630/3" alt="Smart Studs Overview" class="rounded-lg shadow-xl">
+                    <img src="images/studs/stud-diagram.png" alt="Stud Diagram" class="rounded-lg shadow-xl max-w-full h-auto">
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Structural Smart Studs -->
+    <!-- Smart Studs -->
     <div id="product-lines" class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center">
                 <div class="order-2 lg:order-1">
-                    <img src="http://static.photos/construction/1200x630/3" alt="Structural Smart Studs" class="rounded-lg shadow-xl">
+                    <img src="http://static.photos/construction/1200x630/3" alt="Smart Studs" class="rounded-lg shadow-xl">
                 </div>
                 <div class="order-1 lg:order-2">
-                    <h3 class="text-3xl font-extrabold text-gray-900 mb-4">Structural Smart Studs</h3>
+                    <h3 class="text-3xl font-extrabold text-gray-900 mb-4">Smart Studs</h3>
                     <p class="text-lg text-gray-600 leading-relaxed mb-6">
-                        Structural Smart Studs are designed for load-bearing applications including curtain walls, floor joists, headers, roof trusses, and shear walls. Manufactured from high-strength steel (minimum Grade 33 ksi for light gauges and Grade 50 ksi for heavy gauges), these studs meet AISI S240 standards for Cold-Formed Steel Structural Framing.
+                        Smart Studs are designed for load-bearing applications including curtain walls, floor joists, headers, roof trusses, and shear walls. Manufactured from high-strength steel (minimum Grade 33 ksi for light gauges and Grade 50 ksi for heavy gauges), these studs meet AISI S240 standards for Cold-Formed Steel Smart Framing.
                     </p>
                     <p class="text-lg text-gray-600 leading-relaxed mb-6">
                         Perfect for schools, hospitals, mid-rise buildings, and heavy-duty framing assemblies requiring long-span and high-strength performance. Available in gauges 20S through 12 (33 to 97 mils) with minimum G60 coating, with G90 available for enhanced protection.
@@ -244,7 +290,7 @@
                 </div>
             </div>
             
-            <!-- Structural Options Specifications -->
+            <!-- Smart Options Specifications -->
             <div class="mt-12 bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl shadow-2xl border border-slate-200 p-10 relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-indigo-600/10 rounded-full -translate-y-16 translate-x-16"></div>
                 <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-slate-400/10 to-gray-500/10 rounded-full translate-y-12 -translate-x-12"></div>
@@ -294,28 +340,38 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Punchout Options -->
+            <div class="mt-12">
+                <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-8">
+                    <h4 class="text-2xl font-bold text-gray-900 mb-6 text-center">Punchout Options</h4>
+                    <div class="flex justify-center">
+                        <img src="images/studs/smart-studs-punchout-options.png" alt="Smart Studs Punchout Options" class="max-w-full h-auto rounded-lg">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Non-Structural Smart Studs -->
+    <!-- Drywall Studs -->
     <div class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center">
                 <div>
-                    <h3 class="text-3xl font-extrabold text-gray-900 mb-4">Non-Structural Smart Studs</h3>
+                    <h3 class="text-3xl font-extrabold text-gray-900 mb-4">Drywall Studs</h3>
                     <p class="text-lg text-gray-600 leading-relaxed mb-6">
-                        Non-Structural Smart Studs are designed for interior and exterior non-load-bearing walls, partitions, and architectural features. These studs provide excellent dimensional stability and ease of installation for standard framing applications.
+                        Drywall Studs are designed for interior and exterior non-load-bearing walls, partitions, and architectural features. These studs provide excellent dimensional stability and ease of installation for standard framing applications.
                     </p>
                     <p class="text-lg text-gray-600 leading-relaxed mb-6">
-                        Ideal for interior walls, demising walls, and architectural features where structural loads are not a concern. Features pre-punched knockouts for easy utility installation and consistent spacing for optimal efficiency.
+                        Ideal for interior walls, demising walls, and architectural features where smart loads are not a concern. Features pre-punched knockouts for easy utility installation and consistent spacing for optimal efficiency.
                     </p>
                 </div>
                 <div class="mt-8 lg:mt-0">
-                    <img src="http://static.photos/construction/1200x630/3" alt="Non-Structural Smart Studs" class="rounded-lg shadow-xl">
+                    <img src="http://static.photos/construction/1200x630/3" alt="Drywall Studs" class="rounded-lg shadow-xl">
                 </div>
             </div>
             
-            <!-- Non-Structural Options Specifications -->
+            <!-- Drywall Options Specifications -->
             <div class="mt-12 bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl shadow-2xl border border-slate-200 p-10 relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-indigo-600/10 rounded-full -translate-y-16 translate-x-16"></div>
                 <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-slate-400/10 to-gray-500/10 rounded-full translate-y-12 -translate-x-12"></div>
@@ -365,6 +421,16 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Punchout Options -->
+            <div class="mt-12">
+                <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-8">
+                    <h4 class="text-2xl font-bold text-gray-900 mb-6 text-center">Punchout Options</h4>
+                    <div class="flex justify-center">
+                        <img src="images/studs/drywall-studs-punchout-options.png" alt="Drywall Studs Punchout Options" class="max-w-full h-auto rounded-lg">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -381,8 +447,16 @@
                         EQ Smart Studs are earthquake-resistant studs engineered for seismic applications. Enhanced design provides superior performance in earthquake-prone regions with specialized connections and reinforcement.
                     </p>
                     <p class="text-lg text-gray-600 leading-relaxed mb-6">
-                        Our EQ studs meet the most stringent seismic design requirements and are tested to withstand significant lateral forces. Essential for construction in seismic zones and high-wind areas where structural integrity is paramount.
+                        Our EQ studs meet the most stringent seismic design requirements and are tested to withstand significant lateral forces. Essential for construction in seismic zones and high-wind areas where smart integrity is paramount.
                     </p>
+                    <div class="mt-6">
+                        <a href="documents/ESR-5837.pdf" target="_blank" class="inline-flex items-center text-red-600 hover:text-red-700 font-semibold transition-colors duration-200">
+                            <i data-feather="file-text" class="mr-2"></i> View ICC-ES Report ESR-5837
+                            <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
             
@@ -513,7 +587,7 @@
                         <!-- Refined Metal Logo -->
                         <img src="images/rm-logo.png" alt="Refined Metal Logo" class="h-12 w-auto">
                         <!-- ICCES Logo -->
-                        <img src="images/icces-logo.png" alt="ICCES Logo" class="h-12 w-auto">
+                        <img src="images/common/icces-logo.png" alt="ICCES Logo" class="h-12 w-auto">
                         <!-- Additional certification logos can be added here -->
                     </div>
                     <p class="text-gray-500 text-sm">
