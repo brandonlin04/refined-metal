@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17512883426"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17512883426');
+    </script>
     <title>Refined Metal - Industrial Steel Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -339,8 +347,10 @@
     <!-- Hero Section -->
     <div class="relative hero-enhanced overflow-hidden">
         <!-- Background Image -->
-        <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
-            <div class="absolute inset-0 bg-black opacity-40"></div>
+        <div class="absolute inset-0">
+            <img src="images/index/main-photo.png" alt="Refined Metal Background" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='http://static.photos/construction/1200x630/3';">
+            <div class="absolute inset-0 bg-gradient-to-br from-gray-900/70 via-gray-800/60 to-gray-900/70"></div>
+            <div class="absolute inset-0 bg-black/40"></div>
         </div>
         
         <!-- Content -->
