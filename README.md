@@ -91,4 +91,3 @@ refined-metal/
 - **Security Headers**: Multiple security headers set on all responses
 - **CORS Configuration**: Restricted to production domains in production environment
 - **Request Size Limits**: Maximum 10MB request size to prevent DoS attacks
-
