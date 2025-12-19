@@ -54,6 +54,8 @@ If an image file is missing or fails to load, a placeholder image will automatic
 ### Home Page (`index.html`)
 **Folder**: `images/index/`
 
+**Existing Photos:**
+- `main-photo.png` - Background image for hero section
 - `home-page.png` - Main hero image for "About Refined Metal" section
 - `studs.png` - Product category image for Studs
 - `tracks.png` - Product category image for Tracks

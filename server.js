@@ -2,6 +2,7 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
+const https = require('https');
 require('dotenv').config();
 
 const app = express();
@@ -13,7 +14,7 @@ app.set('trust proxy', 1);
 // Rate limiting to prevent spam
 const contactLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 5, // Limit each IP to 5 requests per windowMs
+  max: 3, // Limit each IP to 3 requests per windowMs (reduced from 5)
   message: {
     success: false,
     message: 'Too many contact form submissions. Please try again later.'
@@ -57,22 +58,132 @@ const transporter = nodemailer.createTransport({
   }
 });
 
+// reCAPTCHA verification function
+async function verifyRecaptcha(token, ip) {
+  return new Promise((resolve, reject) => {
+    if (!token) {
+      resolve({ success: false, error: 'No token provided' });
+      return;
+    }
+
+    const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+    if (!secretKey) {
+      console.log('reCAPTCHA secret key not configured, skipping verification');
+      resolve({ success: true });
+      return;
+    }
+
+    const postData = JSON.stringify({
+      secret: secretKey,
+      response: token,
+      remoteip: ip
+    });
+
+    const options = {
+      hostname: 'www.google.com',
+      port: 443,
+      path: '/recaptcha/api/siteverify',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(postData)
+      }
+    };
+
+    const req = https.request(options, (res) => {
+      let data = '';
+
+      res.on('data', (chunk) => {
+        data += chunk;
+      });
+
+      res.on('end', () => {
+        try {
+          const result = JSON.parse(data);
+          resolve(result);
+        } catch (error) {
+          reject(error);
+        }
+      });
+    });
+
+    req.on('error', (error) => {
+      reject(error);
+    });
+
+    req.write(postData);
+    req.end();
+  });
+}
+
+// Spam detection functions
+function containsRandomPattern(text) {
+  if (!text) return false;
+  const vowels = (text.match(/[aeiouAEIOU]/g) || []).length;
+  const consonants = (text.match(/[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]/g) || []).length;
+  const totalLetters = vowels + consonants;
+  
+  if (totalLetters < 5) return false;
+  
+  const consonantRatio = consonants / totalLetters;
+  if (consonantRatio > 0.8) return true;
+  
+  const mixedCasePattern = /[a-z][A-Z][a-z][A-Z]/;
+  if (mixedCasePattern.test(text)) return true;
+  
+  const repeatedPattern = /(.{3,}).*\1/;
+  if (repeatedPattern.test(text.toLowerCase())) return true;
+  
+  return false;
+}
+
+function isValidName(name) {
+  if (!name) return false;
+  // Names should contain mostly letters, spaces, hyphens, and apostrophes
+  // Should not be mostly random characters
+  const namePattern = /^[a-zA-Z\s\-']+$/;
+  if (!namePattern.test(name)) return false;
+  
+  // Check for random patterns
+  if (containsRandomPattern(name)) return false;
+  
+  // Should have at least one vowel
+  if (!/[aeiouAEIOU]/.test(name)) return false;
+  
+  return true;
+}
+
 // Input validation function
 function validateInput(data) {
   const errors = [];
   
+  if (data.website || data.url || data.honeypot) {
+    console.log('Spam detected: Honeypot field filled');
+    errors.push('Invalid submission detected');
+    return { errors, sanitized: null, isSpam: true };
+  }
+  
   // Required fields
   if (!data.firstName || data.firstName.trim().length < 2) {
     errors.push('First name must be at least 2 characters');
+  } else if (!isValidName(data.firstName)) {
+    errors.push('Please enter a valid first name');
   }
+  
   if (!data.lastName || data.lastName.trim().length < 2) {
     errors.push('Last name must be at least 2 characters');
+  } else if (!isValidName(data.lastName)) {
+    errors.push('Please enter a valid last name');
   }
+  
   if (!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
     errors.push('Valid email address is required');
   }
+  
   if (!data.message || data.message.trim().length < 10) {
     errors.push('Message must be at least 10 characters');
+  } else if (containsRandomPattern(data.message)) {
+    errors.push('Message appears to be invalid');
   }
   
   // Length limits
@@ -95,6 +206,10 @@ function validateInput(data) {
     errors.push('Message is too long');
   }
   
+  if (data.company && containsRandomPattern(data.company)) {
+    errors.push('Company name appears to be invalid');
+  }
+  
   // Sanitize inputs
   const sanitized = {
     firstName: data.firstName ? data.firstName.trim().replace(/[<>]/g, '') : '',
@@ -106,7 +221,7 @@ function validateInput(data) {
     message: data.message ? data.message.trim().replace(/[<>]/g, '') : ''
   };
   
-  return { errors, sanitized };
+  return { errors, sanitized, isSpam: false };
 }
 
 // Contact form endpoint
@@ -115,11 +230,60 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
     console.log('Contact form submission received:', {
       email: req.body.email,
       name: `${req.body.firstName} ${req.body.lastName}`,
-      subject: req.body.subject
+      subject: req.body.subject,
+      ip: req.ip
     });
     
-    // Validate and sanitize input
-    const { errors, sanitized } = validateInput(req.body);
+    // Verify reCAPTCHA token
+    if (req.body.recaptchaToken) {
+      const recaptchaResult = await verifyRecaptcha(req.body.recaptchaToken, req.ip);
+      
+      if (!recaptchaResult.success) {
+        console.log('reCAPTCHA verification failed:', {
+          ip: req.ip,
+          email: req.body.email,
+          errors: recaptchaResult['error-codes']
+        });
+        return res.status(400).json({ 
+          success: false, 
+          message: 'Security verification failed. Please try again.' 
+        });
+      }
+      
+      // Check reCAPTCHA score (v3 returns a score from 0.0 to 1.0)
+      // Lower scores indicate bot-like behavior
+      if (recaptchaResult.score !== undefined && recaptchaResult.score < 0.5) {
+        console.log('reCAPTCHA score too low:', {
+          ip: req.ip,
+          email: req.body.email,
+          score: recaptchaResult.score
+        });
+        return res.status(400).json({ 
+          success: false, 
+          message: 'Security verification failed. Please try again.' 
+        });
+      }
+    } else if (process.env.RECAPTCHA_SECRET_KEY) {
+      console.log('reCAPTCHA token missing but required');
+      return res.status(400).json({ 
+        success: false, 
+        message: 'Security verification required. Please refresh the page and try again.' 
+      });
+    }
+    
+    const { errors, sanitized, isSpam } = validateInput(req.body);
+    
+    if (isSpam) {
+      console.log('Spam submission blocked:', {
+        ip: req.ip,
+        email: req.body.email,
+        name: `${req.body.firstName} ${req.body.lastName}`
+      });
+      return res.status(400).json({ 
+        success: false, 
+        message: 'Invalid submission. Please check your information and try again.' 
+      });
+    }
     
     if (errors.length > 0) {
       return res.status(400).json({ 
