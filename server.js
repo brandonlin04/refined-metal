@@ -26,6 +26,7 @@ const contactLimiter = rateLimit({
 // Security middleware
 app.use((req, res, next) => {
   // Security headers
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Frame-Options', 'DENY');
   res.setHeader('X-XSS-Protection', '1; mode=block');
