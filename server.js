@@ -26,7 +26,6 @@ const contactLimiter = rateLimit({
 // Security middleware
 app.use((req, res, next) => {
   // Security headers
-  res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Frame-Options', 'DENY');
   res.setHeader('X-XSS-Protection', '1; mode=block');
@@ -42,7 +41,16 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.json({ limit: '10mb' })); // Limit request size
-app.use(express.static('.')); // Serve static files from current directory
+
+// Serve static files with charset encoding for HTML
+app.use(express.static('.', {
+  setHeaders: (res, path) => {
+    // Add charset=utf-8 to HTML files
+    if (path.endsWith('.html') || path.endsWith('/')) {
+      res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    }
+  }
+}));
 
 // Email transporter configuration for Office 365
 const transporter = nodemailer.createTransport({
