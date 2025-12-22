@@ -42,6 +42,15 @@ app.use(cors({
 }));
 app.use(express.json({ limit: '10mb' })); // Limit request size
 
+// Middleware to ensure charset is set for HTML responses
+app.use((req, res, next) => {
+  // Set charset for HTML files before static middleware
+  if (req.path.endsWith('.html') || req.path === '/' || (!req.path.includes('.') && !req.path.startsWith('/api/'))) {
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  }
+  next();
+});
+
 // Serve static files with charset encoding for HTML
 app.use(express.static('.', {
   setHeaders: (res, path) => {
