@@ -1,5 +1,22 @@
 # Update
 
+## 2026-08-18 - Valid Product Filter Combinations
+
+### Summary
+
+- Changed product filters to faceted, dependent options so every displayed value remains compatible with the customer's other selections.
+- Prevented unavailable combinations such as Structural Tracks / 2.5 / 1.5 / 27 mil from being selectable; 27 mil is removed as soon as the preceding selections make it invalid.
+- Preserved the current selections while the remaining dropdown options update.
+
+### Verification
+
+- `npm test`: 15 tests passed, including a regression proving empty-result facet values are excluded.
+- Browser QA: reproduced the reported Tracks path and confirmed Mil / Thickness offers only 33, 43, 54, 68, and 97; Coating offers only G60 and G60/G90, with five matching products and no console errors.
+
+### Notes
+
+- Search text may still intentionally show no results when the customer enters an unknown product ID or designation.
+
 ## 2026-08-17 - Standalone Submittal Builder
 
 ### Summary

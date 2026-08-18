@@ -28,6 +28,22 @@ test('getFilterOptions returns only relevant distinct values', () => {
   assert.deepEqual(Core.getFilterOptions(products, 'studs').web_depth, ['3.625']);
 });
 
+test('getFilterOptions excludes facet values that would produce no matching products', () => {
+  const trackProducts = [
+    { id: 'T27-G60', category: 'studs_tracks', type: 'Structural Tracks', web_depth: '2.5', flange: '1.5', mil: '27', coating: 'G60' },
+    { id: 'T33-G40', category: 'studs_tracks', type: 'Structural Tracks', web_depth: '2.5', flange: '1.5', mil: '33', coating: 'G40' },
+    { id: 'T27-G40-DEEP', category: 'studs_tracks', type: 'Structural Tracks', web_depth: '3.625', flange: '1.5', mil: '27', coating: 'G40' },
+  ];
+  const options = Core.getFilterOptions(trackProducts, 'tracks', {
+    type: 'Structural Tracks',
+    web_depth: '2.5',
+    flange: '1.5',
+    mil: '27',
+  });
+
+  assert.deepEqual(options.coating, ['G60']);
+});
+
 test('selection helpers prevent duplicates and normalize quantity', () => {
   let selected = Core.addSelection([], 'S1');
   selected = Core.addSelection(selected, 'S1');

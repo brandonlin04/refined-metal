@@ -1,5 +1,13 @@
 # Function Updates
 
+## 2026-08-18
+
+### Dependent Product Filters
+
+- Each filter now derives its options from products that satisfy all other selected facets.
+- Values that would lead to an empty product result are not shown to customers.
+- Active values remain selected while compatible options in the other dropdowns refresh.
+
 ## 2026-08-17
 
 ### Standalone Submittal Builder

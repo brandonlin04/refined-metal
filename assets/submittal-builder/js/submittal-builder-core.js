@@ -48,11 +48,14 @@
     });
   }
 
-  function getFilterOptions(products, category) {
-    const categoryProducts = products.filter((product) => getUiCategory(product) === category);
+  function getFilterOptions(products, category, activeFilters = {}) {
     const options = {};
     for (const key of FILTER_KEYS[category] || []) {
-      options[key] = [...new Set(categoryProducts.map((product) => product[key]).filter(Boolean))].sort(compareValues);
+      const otherFilters = Object.fromEntries(
+        Object.entries(activeFilters).filter(([filterKey, value]) => filterKey !== key && value),
+      );
+      const matchingProducts = filterProducts(products, { category, filters: otherFilters });
+      options[key] = [...new Set(matchingProducts.map((product) => product[key]).filter(Boolean))].sort(compareValues);
     }
     return options;
   }

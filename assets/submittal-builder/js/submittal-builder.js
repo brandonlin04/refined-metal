@@ -82,7 +82,7 @@
   }
 
   function renderFilters() {
-    const options = Core.getFilterOptions(state.products, state.category);
+    const options = Core.getFilterOptions(state.products, state.category, state.filters);
     filtersNode.innerHTML = '';
     for (const [key, values] of Object.entries(options)) {
       const row = document.createElement('div');
@@ -104,6 +104,7 @@
         option.textContent = key === 'grade' ? `Grade ${value}` : value;
         select.append(option);
       }
+      select.value = state.filters[key] || '';
       row.append(label, select);
       filtersNode.append(row);
     }
@@ -443,6 +444,7 @@
   root.addEventListener('change', (event) => {
     if (event.target.matches('[data-filter]')) {
       state.filters[event.target.dataset.filter] = event.target.value;
+      renderFilters();
       renderProducts();
     } else if (event.target === productSelect) {
       addButton.disabled = !event.target.value;
