@@ -1,0 +1,143 @@
+{
+  "catalog_source": "Refined Metal Steel Catalog 2025",
+  "excluded_profiles": ["9/16 Deck"],
+  "coatings": ["G40", "G60", "G90"],
+  "profiles": [
+    {
+      "code": "15CD",
+      "family": "1.5\" Composite Deck",
+      "deck_type": "Composite Deck",
+      "depth": "1.5\"",
+      "grade": "40",
+      "photo": "photos/composite-15.png",
+      "drawing": "drawings/composite-15.png",
+      "source_pages": [41, 42, 43, 44],
+      "performance_pages": ["page-43.png", "page-44.png", "page-45.png", "page-46.png"],
+      "rows": [
+        {"gauge":"22","design_thickness":"0.0295","weight_psf":"1.6","fy_ksi":"40","s_pos":"0.173","s_neg":"0.184","m_pos":"4135","m_neg":"4415","i_pos":"0.147","i_neg":"0.171"},
+        {"gauge":"20","design_thickness":"0.0358","weight_psf":"2.0","fy_ksi":"40","s_pos":"0.219","s_neg":"0.231","m_pos":"5246","m_neg":"5533","i_pos":"0.187","i_neg":"0.216"},
+        {"gauge":"18","design_thickness":"0.0474","weight_psf":"2.6","fy_ksi":"40","s_pos":"0.299","s_neg":"0.312","m_pos":"7154","m_neg":"7473","i_pos":"0.263","i_neg":"0.290"},
+        {"gauge":"16","design_thickness":"0.0598","weight_psf":"3.0","fy_ksi":"40","s_pos":"0.383","s_neg":"0.390","m_pos":"9166","m_neg":"9333","i_pos":"0.350","i_neg":"0.363"}
+      ]
+    },
+    {
+      "code": "15CD",
+      "family": "1.5\" Composite Deck",
+      "deck_type": "Composite Deck",
+      "depth": "1.5\"",
+      "grade": "50",
+      "photo": "photos/composite-15.png",
+      "drawing": "drawings/composite-15.png",
+      "source_pages": [45, 46, 47, 48],
+      "performance_pages": ["page-47.png", "page-48.png", "page-49.png", "page-50.png"],
+      "rows": [
+        {"gauge":"22","design_thickness":"0.0295","weight_psf":"1.6","fy_ksi":"50","s_pos":"0.170","s_neg":"0.179","m_pos":"5101","m_neg":"5358","i_pos":"0.144","i_neg":"0.167"},
+        {"gauge":"20","design_thickness":"0.0358","weight_psf":"2.0","fy_ksi":"50","s_pos":"0.216","s_neg":"0.222","m_pos":"6457","m_neg":"6661","i_pos":"0.182","i_neg":"0.210"},
+        {"gauge":"18","design_thickness":"0.0474","weight_psf":"2.6","fy_ksi":"50","s_pos":"0.294","s_neg":"0.310","m_pos":"8812","m_neg":"9291","i_pos":"0.257","i_neg":"0.290"},
+        {"gauge":"16","design_thickness":"0.0598","weight_psf":"3.0","fy_ksi":"50","s_pos":"0.378","s_neg":"0.390","m_pos":"11327","m_neg":"11667","i_pos":"0.341","i_neg":"0.363"}
+      ]
+    },
+    {
+      "code": "15CD",
+      "family": "1.5\" Composite Deck",
+      "deck_type": "Composite Deck",
+      "depth": "1.5\"",
+      "grade": "80",
+      "photo": "photos/composite-15.png",
+      "drawing": "drawings/composite-15.png",
+      "source_pages": [50, 51, 52, 53],
+      "performance_pages": ["page-52.png", "page-53.png", "page-54.png", "page-55.png"],
+      "rows": [
+        {"gauge":"22","design_thickness":"0.0295","weight_psf":"1.6","fy_ksi":"60","s_pos":"0.166","s_neg":"0.175","m_pos":"5958","m_neg":"6269","i_pos":"0.142","i_neg":"0.167"},
+        {"gauge":"20","design_thickness":"0.0358","weight_psf":"2.0","fy_ksi":"60","s_pos":"0.206","s_neg":"0.215","m_pos":"7398","m_neg":"7738","i_pos":"0.178","i_neg":"0.209"},
+        {"gauge":"18","design_thickness":"0.0474","weight_psf":"2.6","fy_ksi":"60","s_pos":"0.291","s_neg":"0.306","m_pos":"10455","m_neg":"11006","i_pos":"0.252","i_neg":"0.288"},
+        {"gauge":"16","design_thickness":"0.0598","weight_psf":"3.0","fy_ksi":"60","s_pos":"0.375","s_neg":"0.389","m_pos":"13461","m_neg":"13976","i_pos":"0.334","i_neg":"0.363"}
+      ]
+    },
+    {
+      "code": "2CD",
+      "family": "2\" Composite Deck",
+      "deck_type": "Composite Deck",
+      "depth": "2\"",
+      "grade": "50",
+      "photo": "photos/composite-23.png",
+      "drawing": "drawings/composite-2.png",
+      "source_pages": [54, 55, 56, 57, 58, 59, 60, 61],
+      "performance_pages": ["page-56.png", "page-57.png", "page-58.png", "page-63.png"],
+      "rows": [
+        {"gauge":"22","design_thickness":"0.0295","weight_psf":"1.6","fy_ksi":"50","s_pos":"0.247","s_neg":"0.254","m_pos":"7407","m_neg":"7595","i_pos":"0.311","i_neg":"0.290"},
+        {"gauge":"20","design_thickness":"0.0358","weight_psf":"1.9","fy_ksi":"50","s_pos":"0.329","s_neg":"0.336","m_pos":"9860","m_neg":"10060","i_pos":"0.393","i_neg":"0.373"},
+        {"gauge":"18","design_thickness":"0.0474","weight_psf":"2.5","fy_ksi":"50","s_pos":"0.493","s_neg":"0.500","m_pos":"14760","m_neg":"14960","i_pos":"0.548","i_neg":"0.530"},
+        {"gauge":"16","design_thickness":"0.0598","weight_psf":"3.2","fy_ksi":"50","s_pos":"0.645","s_neg":"0.644","m_pos":"19321","m_neg":"19271","i_pos":"0.703","i_neg":"0.693"}
+      ]
+    },
+    {
+      "code": "3CD",
+      "family": "3\" Composite Deck",
+      "deck_type": "Composite Deck",
+      "depth": "3\"",
+      "grade": "50",
+      "photo": "photos/composite-23.png",
+      "drawing": "drawings/composite-3.png",
+      "source_pages": [62, 63, 64, 65, 66],
+      "performance_pages": ["page-64.png", "page-65.png", "page-66.png", "page-68.png"],
+      "rows": [
+        {"gauge":"22","design_thickness":"0.0295","weight_psf":"1.7","fy_ksi":"50","s_pos":"0.397","s_neg":"0.426","m_pos":"11895","m_neg":"12744","i_pos":"0.722","i_neg":"0.680"},
+        {"gauge":"20","design_thickness":"0.0358","weight_psf":"2.1","fy_ksi":"50","s_pos":"0.525","s_neg":"0.559","m_pos":"15709","m_neg":"16747","i_pos":"0.908","i_neg":"0.870"},
+        {"gauge":"18","design_thickness":"0.0474","weight_psf":"2.7","fy_ksi":"50","s_pos":"0.796","s_neg":"0.795","m_pos":"23822","m_neg":"23812","i_pos":"1.274","i_neg":"1.260"},
+        {"gauge":"16","design_thickness":"0.0598","weight_psf":"3.5","fy_ksi":"50","s_pos":"1.009","s_neg":"1.010","m_pos":"30200","m_neg":"30230","i_pos":"1.624","i_neg":"1.610"}
+      ]
+    },
+    {
+      "code": "078SD",
+      "family": "7/8\" S Deck",
+      "deck_type": "S Deck",
+      "depth": "7/8\"",
+      "grade": "50",
+      "photo": "photos/shallow-form.png",
+      "drawing": "drawings/s-deck-078.png",
+      "source_pages": [67, 68],
+      "performance_pages": ["page-69.png", "page-70.png"],
+      "rows": [
+        {"gauge":"28","design_thickness":"0.0149","weight_psf":"0.7","fy_ksi":"60","s_pos":"0.034","s_neg":"0.036","m_pos":"1239","m_neg":"1304","i_pos":"0.012","i_neg":"0.012"},
+        {"gauge":"26","design_thickness":"0.0179","weight_psf":"0.9","fy_ksi":"60","s_pos":"0.045","s_neg":"0.047","m_pos":"1599","m_neg":"1683","i_pos":"0.015","i_neg":"0.015"},
+        {"gauge":"24","design_thickness":"0.0239","weight_psf":"1.2","fy_ksi":"60","s_pos":"0.065","s_neg":"0.068","m_pos":"2348","m_neg":"2433","i_pos":"0.021","i_neg":"0.021"},
+        {"gauge":"22","design_thickness":"0.0295","weight_psf":"1.4","fy_ksi":"60","s_pos":"0.084","s_neg":"0.084","m_pos":"3024","m_neg":"3024","i_pos":"0.024","i_neg":"0.024"}
+      ]
+    },
+    {
+      "code": "078FD",
+      "family": "7/8\" Form Deck",
+      "deck_type": "Form Deck",
+      "depth": "7/8\"",
+      "grade": "50",
+      "photo": "photos/shallow-form.png",
+      "drawing": "drawings/form-078.png",
+      "source_pages": [69],
+      "performance_pages": ["page-71.png"],
+      "rows": [
+        {"gauge":"26","design_thickness":"0.0179","weight_psf":"0.9","fy_ksi":"60","s_pos":"0.061","s_neg":"0.064","m_pos":"2184","m_neg":"2314","i_pos":"0.035","i_neg":"0.035"},
+        {"gauge":"24","design_thickness":"0.0239","weight_psf":"1.2","fy_ksi":"60","s_pos":"0.090","s_neg":"0.095","m_pos":"3218","m_neg":"3416","i_pos":"0.048","i_neg":"0.048"},
+        {"gauge":"22","design_thickness":"0.0295","weight_psf":"1.5","fy_ksi":"60","s_pos":"0.118","s_neg":"0.124","m_pos":"4248","m_neg":"4449","i_pos":"0.061","i_neg":"0.061"},
+        {"gauge":"20","design_thickness":"0.0358","weight_psf":"1.8","fy_ksi":"60","s_pos":"0.152","s_neg":"0.152","m_pos":"5446","m_neg":"5443","i_pos":"0.077","i_neg":"0.077"}
+      ]
+    },
+    {
+      "code": "1316FD",
+      "family": "1 5/16\" Form Deck",
+      "deck_type": "Form Deck",
+      "depth": "1 5/16\"",
+      "grade": "50",
+      "photo": "photos/form-1316.png",
+      "drawing": "drawings/form-1316.png",
+      "source_pages": [70, 71],
+      "performance_pages": ["page-72.png", "page-73.png"],
+      "rows": [
+        {"gauge":"22","design_thickness":"0.0295","weight_psf":"1.6","fy_ksi":"50","s_pos":"0.179","s_neg":"0.170","m_pos":"5358","m_neg":"5101","i_pos":"0.167","i_neg":"0.144"},
+        {"gauge":"20","design_thickness":"0.0358","weight_psf":"2.0","fy_ksi":"50","s_pos":"0.222","s_neg":"0.216","m_pos":"6661","m_neg":"6457","i_pos":"0.210","i_neg":"0.182"},
+        {"gauge":"18","design_thickness":"0.0474","weight_psf":"2.6","fy_ksi":"50","s_pos":"0.310","s_neg":"0.294","m_pos":"9291","m_neg":"8812","i_pos":"0.290","i_neg":"0.257"},
+        {"gauge":"16","design_thickness":"0.0598","weight_psf":"3.0","fy_ksi":"50","s_pos":"0.390","s_neg":"0.378","m_pos":"11667","m_neg":"11327","i_pos":"0.363","i_neg":"0.341"}
+      ]
+    }
+  ]
+}
