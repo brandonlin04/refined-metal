@@ -27,3 +27,13 @@ test('standalone builder page includes the complete builder runtime', () => {
   assert.match(page, /assets\/submittal-builder\/js\/submittal-builder-core\.js/);
   assert.match(page, /assets\/submittal-builder\/js\/submittal-builder\.js/);
 });
+
+test('combined package contains only selected product submittals', () => {
+  const page = fs.readFileSync(path.join(root, 'submittal-builder.html'), 'utf8');
+  const runtime = fs.readFileSync(path.join(root, 'assets', 'submittal-builder', 'js', 'submittal-builder.js'), 'utf8');
+
+  assert.doesNotMatch(page, /applicable ICC-ES reports/);
+  assert.doesNotMatch(runtime, /Core\.getEsrIds/);
+  assert.doesNotMatch(runtime, /state\.catalog\.esrReports/);
+  assert.doesNotMatch(runtime, /Appending \$\{report\.id\}/);
+});

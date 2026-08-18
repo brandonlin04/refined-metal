@@ -284,7 +284,7 @@
       page.drawText('REFINED METAL', { x: 42, y: 725, size: 17, font: bold, color: rgb(1, 1, 1) });
     }
     page.drawText('SUBMITTAL PACKAGE', { x: 42, y: 674, size: 25, font: bold, color: rgb(1, 1, 1) });
-    page.drawText('Product data sheets and applicable ICC-ES reports', { x: 42, y: 657, size: 9, font: regular, color: rgb(0.84, 0.88, 0.92) });
+    page.drawText('Selected Refined Metal product submittals', { x: 42, y: 657, size: 9, font: regular, color: rgb(0.84, 0.88, 0.92) });
 
     page.drawText('PROJECT INFORMATION', { x: 42, y: 593, size: 12, font: bold, color: rgb(0.08, 0.15, 0.23) });
     page.drawRectangle({ x: 42, y: 584, width: 528, height: 2, color: rgb(0.89, 0.1, 0.1) });
@@ -297,8 +297,7 @@
     page.drawRectangle({ x: 42, y: 116, width: 528, height: 178, color: rgb(0.96, 0.97, 0.98), borderColor: rgb(0.83, 0.86, 0.89), borderWidth: 1 });
     page.drawText('PACKAGE CONTENTS', { x: 62, y: 264, size: 10, font: bold, color: rgb(0.08, 0.15, 0.23) });
     page.drawText('1. Submittal Index', { x: 62, y: 236, size: 10, font: regular, color: rgb(0.2, 0.25, 0.31) });
-    page.drawText('2. Selected Refined Metal product data sheets', { x: 62, y: 214, size: 10, font: regular, color: rgb(0.2, 0.25, 0.31) });
-    page.drawText('3. Deduplicated applicable ICC-ES reports', { x: 62, y: 192, size: 10, font: regular, color: rgb(0.2, 0.25, 0.31) });
+    page.drawText('2. Selected Refined Metal product submittals', { x: 62, y: 214, size: 10, font: regular, color: rgb(0.2, 0.25, 0.31) });
     page.drawText('Blank project fields are intentionally left available for completion after download.', { x: 62, y: 149, size: 8, font: regular, color: rgb(0.4, 0.45, 0.51) });
     page.drawText('REFINED METAL', { x: 42, y: 43, size: 8, font: bold, color: rgb(0.35, 0.4, 0.46) });
     page.drawText('Page 1', { x: 530, y: 43, size: 8, font: regular, color: rgb(0.35, 0.4, 0.46) });
@@ -363,18 +362,6 @@
         loadedProducts.push({ item, product, document });
       }
 
-      const esrIds = Core.getEsrIds(ordered, state.productMap);
-      const loadedReports = [];
-      for (const esrId of esrIds) {
-        const report = state.catalog.esrReports[esrId];
-        if (!report) {
-          throw new Error(`${esrId}: report metadata is missing`);
-        }
-        setStatus(`Loading ${esrId}…`);
-        const bytes = await fetchPdf(esrId, report.file);
-        loadedReports.push({ id: esrId, document: await window.PDFLib.PDFDocument.load(bytes) });
-      }
-
       const indexPageCount = Math.max(1, Math.ceil(ordered.length / 24));
       const indexEntries = Core.calculateIndex(ordered, state.productMap, pageCounts, 1, indexPageCount);
       const output = await window.PDFLib.PDFDocument.create();
@@ -391,12 +378,6 @@
         const pages = await output.copyPages(document, document.getPageIndices());
         pages.forEach((page) => output.addPage(page));
       }
-      for (const report of loadedReports) {
-        setStatus(`Appending ${report.id}…`);
-        const pages = await output.copyPages(report.document, report.document.getPageIndices());
-        pages.forEach((page) => output.addPage(page));
-      }
-
       const bytes = await output.save({ useObjectStreams: true });
       const magic = new TextDecoder('ascii').decode(bytes.slice(0, 4));
       if (magic !== '%PDF') {
@@ -408,7 +389,7 @@
       downloadLink.download = Core.makeFilename(root.querySelector('#sb-project-name').value);
       downloadLink.hidden = false;
       const megabytes = (bytes.length / 1024 / 1024).toFixed(1);
-      setStatus(`Package ready: ${loadedProducts.length} products, ${loadedReports.length} ESR report${loadedReports.length === 1 ? '' : 's'}, ${output.getPageCount()} pages, ${megabytes} MB. Click Download Package.`, 'success');
+      setStatus(`Package ready: ${loadedProducts.length} products, ${output.getPageCount()} pages, ${megabytes} MB. Click Download Package.`, 'success');
     } catch (error) {
       setStatus(`Package not created: ${error.message}`, 'error');
     } finally {

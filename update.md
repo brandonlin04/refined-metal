@@ -1,5 +1,19 @@
 # Update
 
+## 2026-08-18 - Submittal-only Combined PDF
+
+### Summary
+
+- Removed automatic ICC-ES report loading and appending from the combined package.
+- Combined downloads now contain only the optional cover, generated index, and selected product submittals.
+- Updated the page description, generated cover contents, and completion status to match the package contents.
+
+### Verification
+
+- `npm test`: 16 tests passed, including a regression contract that rejects ICC-ES loading or appending in the Submittal Builder runtime.
+- Browser QA: generated a package for ESR-mapped product `162S125-18`; the output contained four pages (cover, index, and two product pages), while the five-page ESR-5724 report was excluded. No console errors occurred.
+- The standalone ICCES Report page and navigation link remain unchanged.
+
 ## 2026-08-18 - Valid Product Filter Combinations
 
 ### Summary

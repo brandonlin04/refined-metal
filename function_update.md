@@ -2,6 +2,12 @@
 
 ## 2026-08-18
 
+### Submittal-only Combined PDF
+
+- Combined downloads contain the optional cover, index, and selected product submittals only.
+- ICC-ES reports are no longer loaded or appended by the Submittal Builder.
+- The separate ICCES Report page remains available.
+
 ### Dependent Product Filters
 
 - Each filter now derives its options from products that satisfy all other selected facets.

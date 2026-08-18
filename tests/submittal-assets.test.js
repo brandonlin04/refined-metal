@@ -27,7 +27,7 @@ test('all catalog product and ESR assets exist as non-empty PDFs', () => {
   }
 });
 
-test('ESR reports can be loaded by the browser PDF merger', async () => {
+test('ICC-ES report assets remain readable PDFs', async () => {
   for (const report of Object.values(catalog.esrReports)) {
     const document = await PDFDocument.load(assertPdf(report.file));
     assert.ok(document.getPageCount() > 0, report.file);

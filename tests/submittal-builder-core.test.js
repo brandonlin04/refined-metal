@@ -70,10 +70,9 @@ test('reorderWithinCategory swaps only products in the same output group', () =>
   );
 });
 
-test('groupSelections and ESR IDs use fixed category order and deduplicate reports', () => {
+test('groupSelections uses fixed category order', () => {
   const selected = ['D1', 'E1', 'T1', 'J1', 'S1'].map((productId) => ({ productId, quantity: 1 }));
   assert.deepEqual(Core.groupSelections(selected, productMap).map((item) => item.productId), ['S1', 'T1', 'J1', 'E1', 'D1']);
-  assert.deepEqual(Core.getEsrIds(selected, productMap), ['ESR-5724', 'ESR-5837']);
 });
 
 test('calculateIndex assigns product start pages after cover and index', () => {

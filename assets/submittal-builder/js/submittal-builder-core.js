@@ -120,17 +120,6 @@
       .map(({ item }) => item);
   }
 
-  function getEsrIds(selected, productMap) {
-    const ids = [];
-    for (const item of groupSelections(selected, productMap)) {
-      const esrId = productMap.get(item.productId)?.esr_id;
-      if (esrId && !ids.includes(esrId)) {
-        ids.push(esrId);
-      }
-    }
-    return ids;
-  }
-
   function calculateIndex(selected, productMap, pageCounts, coverPages = 1, indexPages = 1) {
     let startPage = coverPages + indexPages + 1;
     return groupSelections(selected, productMap).map((item) => {
@@ -173,7 +162,6 @@
     removeSelection,
     reorderWithinCategory,
     groupSelections,
-    getEsrIds,
     calculateIndex,
     makeFilename,
   };
