@@ -27,6 +27,7 @@
   padding: 1.4rem max(1.25rem, calc((100% - 1120px) / 2));
 }
 
+.submittal-builder .sb-hero h1,
 .submittal-builder .sb-hero h2 {
   margin: 0;
   font-family: 'Space Grotesk', sans-serif !important;

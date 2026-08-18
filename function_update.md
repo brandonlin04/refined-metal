@@ -2,9 +2,10 @@
 
 ## 2026-08-17
 
-### Homepage Submittal Builder
+### Standalone Submittal Builder
 
-- Public homepage entry point and embedded builder matching the approved Refined Metal visual reference.
+- Dedicated public `submittal-builder.html` page matching the approved Refined Metal visual reference.
+- Homepage navigation and Product Resources card link to the standalone page; the Builder is not embedded in homepage content.
 - Product categories: Studs, Tracks, Joists, EQ Framing, and Decking.
 - Search and dynamic source-backed filters with exact-match auto-selection.
 - Selected-package management with quantities, grouped display, duplicate prevention, category-local reordering, removal, and individual PDF download.

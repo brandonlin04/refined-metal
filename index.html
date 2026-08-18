@@ -24,7 +24,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="assets/submittal-builder/css/submittal-builder.css" rel="stylesheet">
     <style>
         /* Industrial Theme Variables */
         :root {
@@ -332,7 +331,7 @@
                         </div>
                         
                         <a href="icces-report.html" class="border-transparent text-gray-600 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap transition-colors duration-200">ICCES Report</a>
-                        <a href="#submittal-builder" class="border-transparent text-gray-600 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap transition-colors duration-200">Submittal Builder</a>
+                        <a href="submittal-builder.html" class="border-transparent text-gray-600 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap transition-colors duration-200">Submittal Builder</a>
                         <a href="contact.html" class="border-transparent text-gray-600 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap transition-colors duration-200">Contact</a>
                     </div>
                 </div>
@@ -640,8 +639,8 @@
                                 </div>
                             </div>
                             <div class="mt-8">
-                                <a href="#submittal-builder" class="btn-primary inline-flex items-center px-6 py-3 border border-transparent text-base font-semibold rounded-lg text-white w-full justify-center" style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);">
-                                    <i data-feather="arrow-down" class="mr-3"></i> Build a Submittal
+                                <a href="submittal-builder.html" class="btn-primary inline-flex items-center px-6 py-3 border border-transparent text-base font-semibold rounded-lg text-white w-full justify-center" style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);">
+                                    <i data-feather="arrow-right" class="mr-3"></i> Build a Submittal
                                 </a>
                             </div>
                         </div>
@@ -650,90 +649,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Submittal Builder -->
-    <section id="submittal-builder" class="submittal-builder" aria-labelledby="submittal-builder-title">
-        <header class="sb-hero">
-            <h2 id="submittal-builder-title">Submittal Builder</h2>
-            <p>Build a submittal package for your project by selecting Refined Metal products. Download one combined PDF with product data sheets and applicable ICC-ES reports.</p>
-        </header>
-
-        <div class="sb-shell">
-            <details class="sb-cover">
-                <summary><i data-feather="clipboard"></i> Cover information</summary>
-                <div class="sb-cover-fields">
-                    <div class="sb-field">
-                        <label for="sb-project-name">Project name</label>
-                        <input id="sb-project-name" type="text" maxlength="100" autocomplete="organization-title" placeholder="Leave blank for a fill-in line">
-                    </div>
-                    <div class="sb-field">
-                        <label for="sb-contractor">Contractor</label>
-                        <input id="sb-contractor" type="text" maxlength="100" autocomplete="organization" placeholder="Leave blank for a fill-in line">
-                    </div>
-                    <div class="sb-field">
-                        <label for="sb-prepared-by">Prepared by</label>
-                        <input id="sb-prepared-by" type="text" maxlength="100" autocomplete="name" placeholder="Leave blank for a fill-in line">
-                    </div>
-                </div>
-            </details>
-
-            <div class="sb-grid">
-                <section class="sb-panel" aria-labelledby="sb-add-products-title">
-                    <div class="sb-panel-body">
-                        <h3 id="sb-add-products-title" class="sb-panel-title">Add Products to Your Package</h3>
-                        <div class="sb-field">
-                            <label for="sb-search" class="sr-only">Search product ID or designation</label>
-                            <div class="sb-search-wrap">
-                                <input id="sb-search" type="search" placeholder="Search product ID or designation" autocomplete="off">
-                                <i data-feather="search"></i>
-                            </div>
-                        </div>
-
-                        <div class="sb-tabs" role="tablist" aria-label="Product categories">
-                            <button class="sb-tab" type="button" role="tab" data-category="studs" aria-selected="true">Studs</button>
-                            <button class="sb-tab" type="button" role="tab" data-category="tracks" aria-selected="false">Tracks</button>
-                            <button class="sb-tab" type="button" role="tab" data-category="joists" aria-selected="false">Joists</button>
-                            <button class="sb-tab" type="button" role="tab" data-category="eq_framing" aria-selected="false">EQ Framing</button>
-                            <button class="sb-tab" type="button" role="tab" data-category="decking" aria-selected="false">Decking</button>
-                        </div>
-
-                        <div id="sb-filters" class="sb-filters" aria-live="polite"></div>
-                        <div id="sb-product-picker" class="sb-field" hidden>
-                            <label for="sb-product-select">Matching product</label>
-                            <select id="sb-product-select" disabled>
-                                <option value="">Loading catalog…</option>
-                            </select>
-                        </div>
-                        <p id="sb-results-note" class="sb-results-note"></p>
-                        <button id="sb-add" class="sb-primary" type="button" disabled>Add to Package</button>
-
-                        <div class="sb-help">
-                            <i data-feather="info"></i>
-                            <span><strong>Need help selecting a product?</strong><br>Use our product resources or contact our team.</span>
-                            <a href="contact.html">Contact Us</a>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="sb-panel" aria-labelledby="sb-selected-title">
-                    <div class="sb-panel-body" style="padding-bottom: 0;">
-                        <h3 id="sb-selected-title" class="sb-panel-title">Selected Submittals</h3>
-                    </div>
-                    <div class="sb-selected-toolbar">
-                        <span id="sb-total" class="sb-total">Total Products: 0</span>
-                        <a id="sb-download" class="sb-secondary sb-build" href="#" download hidden><i data-feather="download"></i> Download Package</a>
-                        <button id="sb-build" class="sb-secondary sb-build" type="button" disabled><i data-feather="file-text"></i> Build Combined PDF</button>
-                    </div>
-                    <div id="sb-groups" class="sb-groups"></div>
-                    <div class="sb-drag-note"><i data-feather="move"></i> Drag or use arrow controls to reorder products within a category</div>
-                </section>
-            </div>
-
-            <p id="sb-status" class="sb-status" data-kind="info" aria-live="polite">Loading the Refined Metal product catalog…</p>
-            <button id="sb-retry" class="sb-secondary sb-build" type="button" hidden>Retry Catalog</button>
-            <p class="sb-footnote">Submittal packages are assembled locally in your browser. Project information is not uploaded.</p>
-        </div>
-    </section>
 
     <!-- Why Choose Us Section -->
     <div class="section-enhanced section-padding">
@@ -864,8 +779,5 @@
         AOS.init();
         feather.replace();
     </script>
-    <script src="assets/submittal-builder/vendor/pdf-lib.min.js"></script>
-    <script src="assets/submittal-builder/js/submittal-builder-core.js"></script>
-    <script src="assets/submittal-builder/js/submittal-builder.js"></script>
 </body>
 </html>

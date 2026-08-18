@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Build a Refined Metal project submittal package with product data sheets and applicable ICC-ES reports.">
+    <link rel="icon" type="image/png" href="images/common/rm-logo.png">
+    <link rel="apple-touch-icon" href="images/common/rm-logo.png">
+    <title>Submittal Builder | Refined Metal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="assets/submittal-builder/css/submittal-builder.css" rel="stylesheet">
+    <style>
+        body { margin: 0; font-family: 'Inter', sans-serif; background: #f5f6f8; color: #111827; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif !important; }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 9999;
+            min-width: 12rem;
+            padding: 0.5rem 0;
+            border-radius: 0.5rem;
+            background: white;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.14);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.2s ease-in-out;
+        }
+        .dropdown:hover .dropdown-menu,
+        .dropdown:focus-within .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-menu a { display: block; padding: 0.55rem 1rem; color: #374151; font-size: 0.875rem; }
+        .dropdown-menu a:hover { background: #f3f4f6; color: #111827; }
+    </style>
+</head>
+<body class="antialiased">
+    <nav class="bg-white border-b border-gray-200 shadow-xl" style="position: relative; z-index: 10000;" aria-label="Primary navigation">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center min-w-0">
+                    <a href="index.html" class="flex-shrink-0 flex items-center mr-8 hover:opacity-80 transition-opacity duration-200">
+                        <img src="images/common/rm-logo.png" alt="Refined Metal Logo" class="h-14 w-auto">
+                    </a>
+                    <div class="hidden sm:flex sm:space-x-7 lg:space-x-9">
+                        <a href="index.html" class="border-transparent text-gray-600 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap">Home</a>
+                        <a href="about.html" class="border-transparent text-gray-600 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap">About Us</a>
+                        <div class="relative dropdown">
+                            <button type="button" class="h-20 border-transparent text-gray-600 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap">
+                                Smart Products <i data-feather="chevron-down" class="ml-1 h-4 w-4"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="studs.html">Studs</a>
+                                <a href="tracks.html">Tracks</a>
+                                <a href="joists.html">Joists</a>
+                                <a href="decking.html">Decking</a>
+                            </div>
+                        </div>
+                        <div class="relative dropdown">
+                            <button type="button" class="h-20 border-transparent text-gray-600 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap">
+                                Architectural Products <i data-feather="chevron-down" class="ml-1 h-4 w-4"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="doors.html">Doors</a>
+                                <a href="railings.html">Railings</a>
+                            </div>
+                        </div>
+                        <a href="icces-report.html" class="border-transparent text-gray-600 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap">ICCES Report</a>
+                        <a href="submittal-builder.html" aria-current="page" class="border-red-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-semibold whitespace-nowrap">Submittal Builder</a>
+                        <a href="contact.html" class="border-transparent text-gray-600 hover:border-gray-300 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap">Contact</a>
+                    </div>
+                </div>
+                <div class="flex items-center ml-4">
+                    <a href="contact.html" class="inline-flex items-center px-5 py-3 text-sm font-semibold rounded-lg shadow-lg text-white whitespace-nowrap" style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);">
+                        GET A QUOTE <i data-feather="arrow-right" class="ml-2 h-4 w-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section id="submittal-builder" class="submittal-builder" aria-labelledby="submittal-builder-title">
+            <header class="sb-hero">
+                <h1 id="submittal-builder-title">Submittal Builder</h1>
+                <p>Build a submittal package for your project by selecting Refined Metal products. Download one combined PDF with product data sheets and applicable ICC-ES reports.</p>
+            </header>
+
+            <div class="sb-shell">
+                <details class="sb-cover">
+                    <summary><i data-feather="clipboard"></i> Cover information</summary>
+                    <div class="sb-cover-fields">
+                        <div class="sb-field">
+                            <label for="sb-project-name">Project name</label>
+                            <input id="sb-project-name" type="text" maxlength="100" autocomplete="organization-title" placeholder="Leave blank for a fill-in line">
+                        </div>
+                        <div class="sb-field">
+                            <label for="sb-contractor">Contractor</label>
+                            <input id="sb-contractor" type="text" maxlength="100" autocomplete="organization" placeholder="Leave blank for a fill-in line">
+                        </div>
+                        <div class="sb-field">
+                            <label for="sb-prepared-by">Prepared by</label>
+                            <input id="sb-prepared-by" type="text" maxlength="100" autocomplete="name" placeholder="Leave blank for a fill-in line">
+                        </div>
+                    </div>
+                </details>
+
+                <div class="sb-grid">
+                    <section class="sb-panel" aria-labelledby="sb-add-products-title">
+                        <div class="sb-panel-body">
+                            <h2 id="sb-add-products-title" class="sb-panel-title">Add Products to Your Package</h2>
+                            <div class="sb-field">
+                                <label for="sb-search" class="sr-only">Search product ID or designation</label>
+                                <div class="sb-search-wrap">
+                                    <input id="sb-search" type="search" placeholder="Search product ID or designation" autocomplete="off">
+                                    <i data-feather="search"></i>
+                                </div>
+                            </div>
+
+                            <div class="sb-tabs" role="tablist" aria-label="Product categories">
+                                <button class="sb-tab" type="button" role="tab" data-category="studs" aria-selected="true">Studs</button>
+                                <button class="sb-tab" type="button" role="tab" data-category="tracks" aria-selected="false">Tracks</button>
+                                <button class="sb-tab" type="button" role="tab" data-category="joists" aria-selected="false">Joists</button>
+                                <button class="sb-tab" type="button" role="tab" data-category="eq_framing" aria-selected="false">EQ Framing</button>
+                                <button class="sb-tab" type="button" role="tab" data-category="decking" aria-selected="false">Decking</button>
+                            </div>
+
+                            <div id="sb-filters" class="sb-filters" aria-live="polite"></div>
+                            <div id="sb-product-picker" class="sb-field" hidden>
+                                <label for="sb-product-select">Matching product</label>
+                                <select id="sb-product-select" disabled>
+                                    <option value="">Loading catalog…</option>
+                                </select>
+                            </div>
+                            <p id="sb-results-note" class="sb-results-note"></p>
+                            <button id="sb-add" class="sb-primary" type="button" disabled>Add to Package</button>
+
+                            <div class="sb-help">
+                                <i data-feather="info"></i>
+                                <span><strong>Need help selecting a product?</strong><br>Use our product resources or contact our team.</span>
+                                <a href="contact.html">Contact Us</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="sb-panel" aria-labelledby="sb-selected-title">
+                        <div class="sb-panel-body" style="padding-bottom: 0;">
+                            <h2 id="sb-selected-title" class="sb-panel-title">Selected Submittals</h2>
+                        </div>
+                        <div class="sb-selected-toolbar">
+                            <span id="sb-total" class="sb-total">Total Products: 0</span>
+                            <a id="sb-download" class="sb-secondary sb-build" href="#" download hidden><i data-feather="download"></i> Download Package</a>
+                            <button id="sb-build" class="sb-secondary sb-build" type="button" disabled><i data-feather="file-text"></i> Build Combined PDF</button>
+                        </div>
+                        <div id="sb-groups" class="sb-groups"></div>
+                        <div class="sb-drag-note"><i data-feather="move"></i> Drag or use arrow controls to reorder products within a category</div>
+                    </section>
+                </div>
+
+                <p id="sb-status" class="sb-status" data-kind="info" aria-live="polite">Loading the Refined Metal product catalog…</p>
+                <button id="sb-retry" class="sb-secondary sb-build" type="button" hidden>Retry Catalog</button>
+                <p class="sb-footnote">Submittal packages are assembled locally in your browser. Project information is not uploaded.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-50 border-t border-gray-300">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h2 class="text-sm font-semibold text-gray-500 tracking-wider uppercase mb-4">Products</h2>
+                    <ul class="space-y-3">
+                        <li><a href="studs.html" class="hover:text-gray-500">Studs</a></li>
+                        <li><a href="tracks.html" class="hover:text-gray-500">Tracks</a></li>
+                        <li><a href="joists.html" class="hover:text-gray-500">Joists</a></li>
+                        <li><a href="decking.html" class="hover:text-gray-500">Decking</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="text-sm font-semibold text-gray-500 tracking-wider uppercase mb-4">Company</h2>
+                    <ul class="space-y-3">
+                        <li><a href="about.html" class="hover:text-gray-500">About Us</a></li>
+                        <li><a href="icces-report.html" class="hover:text-gray-500">ICCES Report</a></li>
+                        <li><a href="contact.html" class="hover:text-gray-500">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="text-sm font-semibold text-gray-500 tracking-wider uppercase mb-4">Resources</h2>
+                    <ul class="space-y-3">
+                        <li><a href="catalogs/steel-catalog.pdf" target="_blank" class="hover:text-gray-500">Steel Catalog</a></li>
+                        <li><a href="catalogs/product-identification.pdf" target="_blank" class="hover:text-gray-500">Product Identification Guide</a></li>
+                        <li><a href="privacy-policy.html" class="hover:text-gray-500">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="text-sm font-semibold text-gray-500 tracking-wider uppercase mb-4">Contact</h2>
+                    <ul class="space-y-3">
+                        <li>15-30 131 St</li>
+                        <li>College Point, NY 11356</li>
+                        <li>(929) 235-7999</li>
+                        <li>info@refined-metal.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-300 pt-8 flex flex-col md:flex-row items-center justify-between">
+                <div class="flex items-center space-x-8 mb-4 md:mb-0">
+                    <img src="images/common/rm-logo.png" alt="Refined Metal Logo" class="h-12 w-auto">
+                    <img src="images/common/icces-logo.png" alt="ICCES Logo" class="h-12 w-auto">
+                </div>
+                <p class="text-gray-500 text-sm">&copy; 2025 Refined Metal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>feather.replace();</script>
+    <script src="assets/submittal-builder/vendor/pdf-lib.min.js"></script>
+    <script src="assets/submittal-builder/js/submittal-builder-core.js"></script>
+    <script src="assets/submittal-builder/js/submittal-builder.js"></script>
+</body>
+</html>
