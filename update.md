@@ -1,5 +1,28 @@
 # Update
 
+## 2026-08-26 - Approved Product Images in Core Submittals
+
+### Summary
+
+- Rebuilt all 348 non-Decking product submittals with the approved uploaded series image: Stud, Track, or Joist.
+- Renamed the image panel to `PRODUCT VIEW`, removed the synthetic-image disclaimer, and kept each source image centered at its original aspect ratio without cropping or stretching.
+- Preserved all catalog product data and paths, plus the existing 96 Decking submittals; the public Builder still contains 444 products.
+- Added SHA-256 regression checks for the three approved core product images.
+
+### Verification
+
+- Source generator tests: 8 passed, covering series mapping, missing/unreadable assets, contained drawing geometry, both PDF panel implementations, and preflight validation before output replacement.
+- Source PDF validation: 348/348 files were non-empty two-page PDFs; all contained `PRODUCT VIEW`, and none contained the old `PHOTO-STYLE PRODUCT VIEW` heading or synthetic-image disclaimer.
+- Website tests: `npm test` passed 17/17 tests; all 444 product PDFs and ICC-ES assets remained readable.
+- Visual PDF QA: inspected Structural Stud, EQ Stud, Structural Track, EQ Track, and Joist page-one renders; images were correctly mapped, centered, and unclipped.
+- Browser QA: selected one Stud, Track, Joist, and EQ product; the Builder created a 10-page, 0.8 MB Submittal-only package and exposed the dated download filename. Individual product download also triggered successfully.
+
+### Notes
+
+- The 96 Decking PDF hashes were checked before and after synchronization and did not change.
+- The source catalog was restored byte-for-byte after generation so this image-only update did not alter product metadata or ordering.
+- No production deployment or live-site publication was performed.
+
 ## 2026-08-18 - Submittal-only Combined PDF
 
 ### Summary

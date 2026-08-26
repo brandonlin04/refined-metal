@@ -1,5 +1,15 @@
 # Function Updates
 
+## 2026-08-26
+
+### Approved Product Images in Core Submittals
+
+- All 348 non-Decking submittals use the approved Stud, Track, or Joist uploaded image for their series.
+- Product image panels use the `PRODUCT VIEW` title with no synthetic-image disclaimer.
+- Images are centered and contained without stretching or cropping.
+- Missing, empty, unreadable, or unmapped product images stop generation before existing PDF outputs are replaced.
+- The 96 Decking submittals and the 444-product catalog remain unchanged in scope.
+
 ## 2026-08-18
 
 ### Submittal-only Combined PDF

@@ -1,4 +1,5 @@
 const assert = require('node:assert/strict');
+const crypto = require('node:crypto');
 const fs = require('node:fs');
 const path = require('node:path');
 const test = require('node:test');
@@ -41,5 +42,19 @@ test('generated decking PDFs have the approved page counts', async () => {
     const document = await PDFDocument.load(assertPdf(product.pdf_url));
     const expectedPages = product.deck_type === 'Composite Deck' ? 3 : 2;
     assert.equal(document.getPageCount(), expectedPages, product.id);
+  }
+});
+
+test('core product photos match the approved uploaded source images', () => {
+  const approvedPhotos = {
+    'stud.png': '26d6961968c9a865c45f51ddbf0d1a600120072a4e60f75d667b216cbda6abf9',
+    'track.png': '5591c77502cbc79826d319cc993214382737aeeaf32b1c0f737f89dc3cea0e1b',
+    'joist.png': 'fb59d50f5277c74b77c970f6cafdbcc90133cd5c936fcdedd68d452e0e1ab484',
+  };
+  const photoRoot = path.join(ROOT, 'scripts', 'submittal-builder', 'source', 'photos');
+
+  for (const [filename, expectedHash] of Object.entries(approvedPhotos)) {
+    const bytes = fs.readFileSync(path.join(photoRoot, filename));
+    assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'), expectedHash, filename);
   }
 });
