@@ -1,5 +1,13 @@
 # Function Updates
 
+## 2026-08-27
+
+### Azure Production Deployment Reliability
+
+- Production CI tests use syntax supported by the workflow's Node 20 runtime.
+- Azure Static Web Apps receives only customer-facing runtime files instead of the complete Git checkout.
+- All 444 product records and product PDFs remain included in the production package.
+
 ## 2026-08-26
 
 ### Approved Product Images in Core Submittals

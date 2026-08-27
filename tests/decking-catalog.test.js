@@ -44,7 +44,12 @@ test('decking catalog expands 32 source rows into 96 launch products', () => {
 
 test('decking performance metadata is coating-independent', () => {
   const decking = loadCatalog().products.filter((product) => product.category === 'decking');
-  const variants = Map.groupBy(decking, (product) => product.base_id);
+  const variants = new Map();
+  for (const product of decking) {
+    const products = variants.get(product.base_id) || [];
+    products.push(product);
+    variants.set(product.base_id, products);
+  }
 
   for (const products of variants.values()) {
     assert.equal(products.length, 3);

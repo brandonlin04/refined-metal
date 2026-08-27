@@ -1,5 +1,23 @@
 # Update
 
+## 2026-08-27 - Azure Production Deployment Reliability
+
+### Summary
+
+- Replaced the Decking regression test's unsupported `Map.groupBy` call with a Node 20-compatible `Map` loop.
+- Changed the Azure Static Web Apps workflow to upload only the runtime website: root HTML pages plus `assets`, `catalogs`, `documents`, and `images`.
+- Preserved the complete 444-product catalog and every customer-downloadable product PDF while excluding repository and development files from the deployment package.
+
+### Verification
+
+- `npm test`: 17/17 tests passed.
+- Static deployment inventory: 515 files, 347,707,063 bytes (331.6 MiB), below the 500 MiB Azure Static Web Apps limit.
+- Catalog inventory: 444 products (348 core and 96 Decking), with 0 missing product PDFs.
+
+### Notes
+
+- Production publication still requires both Azure workflows to pass after this change is pushed to `main`.
+
 ## 2026-08-26 - Approved Product Images in Core Submittals
 
 ### Summary
