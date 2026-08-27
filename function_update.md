@@ -2,6 +2,12 @@
 
 ## 2026-08-27
 
+### Homepage Navigation Spacing
+
+- The homepage header uses a wider desktop container and breakpoint-aware menu spacing.
+- Contact and Get a Quote remain separately visible from 1280px upward without overlap.
+- Medium desktop and narrower layouts show the appropriate single contact destination instead of allowing the two controls to collide.
+
 ### Azure Production Deployment Reliability
 
 - Production CI tests use syntax supported by the workflow's Node 20 runtime.

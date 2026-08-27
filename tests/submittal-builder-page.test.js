@@ -14,6 +14,14 @@ test('homepage links to the standalone builder instead of embedding it', () => {
   assert.doesNotMatch(homepage, /assets\/submittal-builder\/js\/submittal-builder\.js/);
 });
 
+test('homepage navigation separates Contact from the quote button at desktop breakpoints', () => {
+  const homepage = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+
+  assert.match(homepage, /<nav[\s\S]*?<div class="max-w-\[90rem\] mx-auto px-4 sm:px-6 lg:px-8">/);
+  assert.match(homepage, /<div class="hidden lg:ml-6 lg:flex lg:space-x-4 xl:space-x-6 2xl:space-x-8">/);
+  assert.match(homepage, /<!-- CTA Button -->\s*<div class="flex lg:hidden xl:flex items-center">/);
+});
+
 test('standalone builder page includes the complete builder runtime', () => {
   const pagePath = path.join(root, 'submittal-builder.html');
 

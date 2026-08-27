@@ -1,5 +1,24 @@
 # Update
 
+## 2026-08-27 - Homepage Navigation Spacing
+
+### Summary
+
+- Expanded the homepage navigation container and reduced menu spacing at desktop breakpoints after adding the Submittal Builder link.
+- Kept Contact and Get a Quote separately visible from 1280px upward without overlap.
+- At 1024–1279px, kept the Contact destination visible and temporarily hid the duplicate quote CTA; below 1024px, kept the quote CTA while the full menu remains collapsed.
+
+### Verification
+
+- Regression test completed a red-to-green cycle for the responsive navigation class contract.
+- Browser geometry checks at 1689, 1536, and 1280px measured 0px overlap; the smallest Contact-to-CTA gap was 29.08px at 1280px.
+- Browser checks at 1024 and 900px confirmed the responsive visibility handoff, with 0px overlap.
+- Visual homepage QA confirmed both desktop controls are fully readable and separated.
+
+### Notes
+
+- No navigation labels, destinations, hero content, or non-homepage headers were changed.
+
 ## 2026-08-27 - Azure Production Deployment Reliability
 
 ### Summary
