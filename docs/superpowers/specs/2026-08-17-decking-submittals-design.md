@@ -41,4 +41,3 @@ The PDF generator uses only values and table regions mapped to the official Stee
 - Product identifiers and PDF URLs are unique, and every referenced PDF exists.
 - Representative products from all six profiles are rendered and visually inspected.
 - Performance metadata is identical across the three coating variants of a base row.
-

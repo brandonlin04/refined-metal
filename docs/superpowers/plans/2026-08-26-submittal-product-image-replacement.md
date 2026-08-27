@@ -117,4 +117,3 @@
 - [ ] Add the change to `function_update.md` in date order without changing a product version.
 - [ ] Review `git diff --check`, scoped status, and the final changed-file list.
 - [ ] Commit only files related to this implementation.
-

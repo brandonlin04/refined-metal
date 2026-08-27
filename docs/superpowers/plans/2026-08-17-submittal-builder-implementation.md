@@ -93,4 +93,3 @@ for coating in ("G40", "G60", "G90"):
 - [ ] Record the 96 decking products, 444-product catalog, homepage Builder, browser-local privacy boundary, verification commands, and unverified live-deployment boundary.
 - [ ] Run `git diff --check`, `npm test`, the PDF integrity script, and the browser smoke flow again.
 - [ ] Stage only task files and commit them on `codex/submittal-builder`; do not push or deploy without explicit authorization.
-

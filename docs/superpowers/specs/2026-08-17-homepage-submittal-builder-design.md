@@ -36,4 +36,3 @@ No API endpoint, database, account, or server-side PDF service is added.
 ## Verification
 
 Node tests cover filtering, deduplication, quantity, ordering, ESR rules, page-index calculation, and filename sanitization. Asset tests require 444 unique products and readable referenced files. Browser checks cover add/remove/filter/build/error states, mobile layout, navigation regression, and console errors. Visual QA compares a browser screenshot against the approved reference image.
-
