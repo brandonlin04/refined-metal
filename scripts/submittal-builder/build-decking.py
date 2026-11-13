@@ -405,7 +405,7 @@ def main() -> int:
     for product in products:
         generate_pdf(product)
     merge_catalog(products)
-    print(f"Generated {len(products)} decking PDFs and merged catalog total 444")
+    print(f"Generated {len(products)} decking PDFs and merged catalog")
     return 0
 
 

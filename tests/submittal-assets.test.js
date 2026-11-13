@@ -19,7 +19,7 @@ function assertPdf(relativePath) {
 }
 
 test('all catalog product and ESR assets exist as non-empty PDFs', () => {
-  assert.equal(catalog.products.length, 444);
+  assert.equal(catalog.products.length, 593);
   for (const product of catalog.products) {
     assertPdf(product.pdf_url);
   }

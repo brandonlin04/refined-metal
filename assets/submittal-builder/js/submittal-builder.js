@@ -205,8 +205,8 @@
         throw new Error(`Catalog request returned HTTP ${response.status}`);
       }
       const catalog = await response.json();
-      if (!Array.isArray(catalog.products) || catalog.products.length !== 444) {
-        throw new Error(`Expected 444 catalog products, received ${catalog.products?.length ?? 0}`);
+      if (!Array.isArray(catalog.products) || !catalog.products.length || catalog.products.length !== catalog.counts?.total) {
+        throw new Error(`Expected ${catalog.counts?.total ?? 'a non-empty catalog of'} products, received ${catalog.products?.length ?? 0}`);
       }
       state.catalog = catalog;
       state.products = catalog.products;

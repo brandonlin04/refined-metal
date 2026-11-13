@@ -13,6 +13,26 @@ const products = [
 ];
 const productMap = new Map(products.map((product) => [product.id, product]));
 
+test('catalog coatings are individual and the same joist can be added in G60 and G90', () => {
+  const catalog = require('../assets/submittal-builder/data/catalog.json');
+  for (const product of catalog.products) {
+    assert.match(product.coating, /^G\d+$/, product.id);
+  }
+  const filters = { type: 'Structural Joists', web_depth: '8', flange: '1.75', mil: '68' };
+  assert.deepEqual(Core.getFilterOptions(catalog.products, 'joists', filters).coating, ['G60', 'G90']);
+  let selected = [];
+  const urls = new Set();
+  for (const coating of ['G60', 'G90']) {
+    const matches = Core.filterProducts(catalog.products, { category: 'joists', filters: { ...filters, coating } });
+    assert.equal(matches.length, 1);
+    assert.equal(matches[0].id, `800J175-68-${coating}`);
+    urls.add(matches[0].pdf_url);
+    selected = Core.addSelection(selected, matches[0].id);
+  }
+  assert.equal(selected.length, 2);
+  assert.equal(urls.size, 2);
+});
+
 test('filterProducts searches identifiers and designation and applies category fields', () => {
   assert.deepEqual(Core.filterProducts(products, { category: 'studs', search: 'alpha', filters: {} }).map((p) => p.id), ['S1']);
   assert.deepEqual(Core.filterProducts(products, { category: 'tracks', search: 'T1', filters: {} }).map((p) => p.id), ['T1']);

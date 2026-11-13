@@ -15,8 +15,8 @@ test('decking catalog expands 32 source rows into 96 launch products', () => {
   const products = catalog.products;
   const decking = products.filter((product) => product.category === 'decking');
 
-  assert.equal(products.length, 444);
-  assert.equal(catalog.counts.total, 444);
+  assert.equal(products.length, 593);
+  assert.equal(catalog.counts.total, 593);
   assert.equal(catalog.counts.decking, 96);
   assert.equal(decking.length, 96);
   assert.equal(decking.some((product) => /9\s*\/\s*16/i.test(`${product.id} ${product.designation} ${product.web_depth}`)), false);
