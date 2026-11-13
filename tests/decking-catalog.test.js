@@ -13,11 +13,11 @@ function loadCatalog() {
 test('decking catalog expands 32 source rows into 96 launch products', () => {
   const catalog = loadCatalog();
   const products = catalog.products;
-  const decking = products.filter((product) => product.category === 'decking');
+  const decking = products.filter((product) => product.category === 'decking' && product.source !== 'ICC-ES ESR-5723');
 
-  assert.equal(products.length, 593);
-  assert.equal(catalog.counts.total, 593);
-  assert.equal(catalog.counts.decking, 96);
+  assert.equal(products.length, 807);
+  assert.equal(catalog.counts.total, 807);
+  assert.equal(catalog.counts.decking, 309);
   assert.equal(decking.length, 96);
   assert.equal(decking.some((product) => /9\s*\/\s*16/i.test(`${product.id} ${product.designation} ${product.web_depth}`)), false);
 

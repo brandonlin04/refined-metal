@@ -15,7 +15,7 @@ const productMap = new Map(products.map((product) => [product.id, product]));
 
 test('catalog coatings are individual and the same joist can be added in G60 and G90', () => {
   const catalog = require('../assets/submittal-builder/data/catalog.json');
-  for (const product of catalog.products) {
+  for (const product of catalog.products.filter((p) => p.category !== 'accessories')) {
     assert.match(product.coating, /^G\d+$/, product.id);
   }
   const filters = { type: 'Structural Joists', web_depth: '8', flange: '1.75', mil: '68' };

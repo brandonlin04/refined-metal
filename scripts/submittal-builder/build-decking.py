@@ -376,20 +376,21 @@ def generate_pdf(product: dict) -> None:
 
 def merge_catalog(products: list[dict]) -> None:
     catalog = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
-    base_products = [product for product in catalog["products"] if product.get("category") != "decking"]
+    generated_ids = {product["id"] for product in products}
+    base_products = [product for product in catalog["products"] if product["id"] not in generated_ids]
     public_products = []
     for product in products:
         public_products.append({key: value for key, value in product.items() if not key.startswith("_")})
     catalog["products"] = base_products + public_products
     catalog["generatedAt"] = datetime.now(ZoneInfo("America/New_York")).isoformat()
     catalog["source"] = "ICC-ES ESR-5724, ESR-5724-Plans, ESR-5837 and Refined Metal Steel Catalog 2025"
-    catalog["counts"] = {
+    catalog["counts"].update({
         "total": len(catalog["products"]),
         "ESR-5724": sum(1 for product in catalog["products"] if product.get("esr_id") == "ESR-5724"),
         "ESR-5837": sum(1 for product in catalog["products"] if product.get("esr_id") == "ESR-5837"),
         "source_limited": sum(1 for product in catalog["products"] if product.get("status") == "source_limited"),
-        "decking": len(public_products),
-    }
+        "decking": sum(product.get("category") == "decking" for product in catalog["products"]),
+    })
     if not any(category.get("id") == "decking" for category in catalog["categories"]):
         catalog["categories"].append({"id": "decking", "label": "Decking"})
     CATALOG_PATH.write_text(json.dumps(catalog, indent=2), encoding="utf-8")

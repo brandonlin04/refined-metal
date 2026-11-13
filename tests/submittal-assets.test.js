@@ -19,7 +19,7 @@ function assertPdf(relativePath) {
 }
 
 test('all catalog product and ESR assets exist as non-empty PDFs', () => {
-  assert.equal(catalog.products.length, 593);
+  assert.equal(catalog.products.length, 807);
   for (const product of catalog.products) {
     assertPdf(product.pdf_url);
   }
@@ -36,7 +36,7 @@ test('ICC-ES report assets remain readable PDFs', async () => {
 });
 
 test('generated decking PDFs have the approved page counts', async () => {
-  const decking = catalog.products.filter((product) => product.category === 'decking');
+  const decking = catalog.products.filter((product) => product.category === 'decking' && product.source !== 'ICC-ES ESR-5723');
   assert.equal(decking.length, 96);
   for (const product of decking) {
     const document = await PDFDocument.load(assertPdf(product.pdf_url));

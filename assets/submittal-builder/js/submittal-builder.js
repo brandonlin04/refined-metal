@@ -13,6 +13,7 @@
     joists: 'Joists',
     eq_framing: 'EQ Framing',
     decking: 'Decking',
+    accessories: 'Accessories',
   };
   const FILTER_LABELS = {
     type: 'Type',

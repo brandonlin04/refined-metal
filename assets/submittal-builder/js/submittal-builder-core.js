@@ -9,13 +9,14 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this, function createSubmittalBuilderCore() {
   'use strict';
 
-  const CATEGORY_ORDER = ['studs', 'tracks', 'joists', 'eq_framing', 'decking'];
+  const CATEGORY_ORDER = ['studs', 'tracks', 'joists', 'eq_framing', 'decking', 'accessories'];
   const FILTER_KEYS = {
     studs: ['type', 'web_depth', 'flange', 'mil', 'coating'],
     tracks: ['type', 'web_depth', 'flange', 'mil', 'coating'],
     joists: ['type', 'web_depth', 'flange', 'mil', 'coating'],
     eq_framing: ['type', 'web_depth', 'flange', 'mil', 'coating'],
     decking: ['deck_type', 'web_depth', 'grade', 'gauge', 'coating'],
+    accessories: ['type'],
   };
 
   function getUiCategory(product) {
