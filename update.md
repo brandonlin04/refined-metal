@@ -1,5 +1,26 @@
 # Update
 
+## 2026-11-13 - Consistent Site Navigation and UL Footer Badge
+
+### Summary
+
+- Unified the navigation on all 12 public HTML pages, including the Evaluation Report and Submittal Builder pages, with the same destinations, labels, spacing, and current-page indicators.
+- Added an accessible mobile menu containing all navigation destinations. Below 360px, the duplicate quote button is hidden while Contact remains available in the menu.
+- Added the supplied transparent UL logo beside the RM and ICC-ES footer logos on every page, linking to the existing UL certificates section.
+
+### Verification
+
+- Page regression tests: 6 passed, including navigation consistency and UL badge coverage across every public page.
+- Targeted Evaluation Report regression: 1 passed.
+- Playwright: all 12 pages passed at 1440px and 390px; the Evaluation Report also passed at 320, 768, 1024, 1280, 1536, and 1920px, with no navigation overlap or clipping.
+- Verified product dropdown navigation, desktop/mobile Submittal Builder navigation, and the footer link to the UL certificates.
+- Verified 48px badge rendering, byte-for-byte preservation of the uploaded image, and no page-content changes outside navigation and the footer badge.
+
+### Notes
+
+- Browser validation found three pre-existing missing images: `images/studs/drywall-studs.png`, `images/tracks/smart-tracks.png`, and `images/tracks/drywall-tracks.png`. These unrelated assets remain outside this change; no new browser errors were found.
+- Uses the existing Azure deployment workflows without pipeline or version changes.
+
 ## 2026-08-27 - Homepage Navigation Spacing
 
 ### Summary

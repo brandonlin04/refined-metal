@@ -1,5 +1,13 @@
 # Function Updates
 
+## 2026-11-13
+
+### Consistent Site Navigation and UL Footer Badge
+
+- All 12 public pages share the same navigation destinations and responsive layout, including Evaluation Report, Submittal Builder, and Contact.
+- The mobile menu exposes all destinations and highlights the current page; the duplicate quote CTA is hidden only on very narrow screens and medium desktop layouts.
+- Every footer displays the uploaded UL badge beside the existing logos and links to the UL certificates on the Evaluation Report page.
+
 ## 2026-08-27
 
 ### Homepage Navigation Spacing
