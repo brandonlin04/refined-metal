@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-13T04:52:45.029523+00:00",
+  "generatedAt": "2026-11-13T05:17:59.325035+00:00",
   "source": "ICC-ES ESR-5724, ESR-5724-Plans, ESR-5837 and Refined Metal Steel Catalog 2025, ICC-ES ESR-5723 and UL R41911",
   "notice": "Generated static catalog. Values are extracted from the official source PDFs in assets/submittal-builder/documents/esr.",
   "counts": {
@@ -49866,7 +49866,6 @@
       "type": "RM Smart Clip",
       "category": "accessories",
       "family": "RM Smart Clip",
-      "coating": "Not provided",
       "status": "source_limited",
       "source": "UL Certificate UL-US-2594886-0",
       "section": {},
@@ -49880,9 +49879,9 @@
         "Coating",
         "Load capacity"
       ],
-      "data_completeness": "Certificate only; product specifications not provided",
+      "data_completeness": "Certificate of Compliance",
       "notes": [
-        "UL 263 Certificate of Compliance; no hourly fire-resistance rating is stated in this certificate."
+        "UL 263 Certificate of Compliance for RM Smart Clip."
       ],
       "sort_order": 807
     }

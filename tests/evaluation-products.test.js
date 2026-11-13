@@ -57,7 +57,7 @@ test('new product PDFs are readable and the clip is selectable with certificate-
   const clips = Core.filterProducts(catalog.products, { category: 'accessories', filters: { type: 'RM Smart Clip' } });
   assert.equal(clips.length, 1);
   assert.equal(clips[0].status, 'source_limited');
-  assert.equal(clips[0].coating, 'Not provided');
+  assert.equal(clips[0].coating, undefined);
   assert.ok(clips[0].data_gaps.includes('Load capacity'));
   assert.equal(Core.addSelection([], clips[0].id).length, 1);
 });

@@ -157,6 +157,7 @@
   function renderSelected() {
     groupsNode.innerHTML = Core.CATEGORY_ORDER.map((category) => {
       const items = groupRows(category);
+      const showCoating = category !== 'accessories';
       const rows = items.map((item, index) => {
         const product = state.productMap.get(item.productId);
         const canMoveUp = index > 0;
@@ -166,7 +167,7 @@
           <tr draggable="true" data-product-id="${escapeHtml(product.id)}">
             <td><strong>${escapeHtml(product.id)}</strong></td>
             <td>${escapeHtml(product.designation)}</td>
-            <td>${escapeHtml(product.coating || '—')}</td>
+            ${showCoating ? `<td>${escapeHtml(product.coating || '—')}</td>` : ''}
             <td><label class="sr-only" for="qty-${escapeHtml(product.id)}">Quantity for ${escapeHtml(product.id)}</label><input id="qty-${escapeHtml(product.id)}" type="number" min="1" step="1" value="${item.quantity}" data-quantity="${escapeHtml(product.id)}"></td>
             <td>
               <div class="sb-row-actions">
@@ -179,7 +180,7 @@
           </tr>`;
       }).join('');
       const content = items.length
-        ? `<div class="sb-table-wrap"><table class="sb-table"><thead><tr><th>Product ID</th><th>Designation</th><th>Coating</th><th>Qty</th><th>Actions</th></tr></thead><tbody>${rows}</tbody></table></div>`
+        ? `<div class="sb-table-wrap"><table class="sb-table"><thead><tr><th>Product ID</th><th>Designation</th>${showCoating ? '<th>Coating</th>' : ''}<th>Qty</th><th>Actions</th></tr></thead><tbody>${rows}</tbody></table></div>`
         : `<div class="sb-empty-row">No ${escapeHtml(CATEGORY_LABELS[category])} selected.</div>`;
       return `<details class="sb-group" data-group="${category}" ${items.length ? 'open' : ''}><summary>${escapeHtml(CATEGORY_LABELS[category])} (${items.length})</summary>${content}</details>`;
     }).join('');

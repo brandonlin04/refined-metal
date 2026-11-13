@@ -205,10 +205,11 @@ def draw_footer(pdf: canvas.Canvas, product: dict, page_number: int) -> None:
     pdf.drawRightString(width - 40, 22, f"{product['id']}  |  Page {page_number}")
 
 
-def draw_summary(pdf: canvas.Canvas, product: dict) -> None:
-    labels = ["PRODUCT", "GRADE", "GAUGE", "COATING"]
-    values = [product["family"], f"Grade {product['grade']}", f"{product['gauge']} ga", product["coating"]]
-    widths = [252, 105, 95, 80]
+def draw_summary(pdf: canvas.Canvas, product: dict, fields: list[tuple[str, str]] | None = None) -> None:
+    if fields is None:
+        fields = [("PRODUCT", product["family"]), ("GRADE", f"Grade {product['grade']}"), ("GAUGE", f"{product['gauge']} ga"), ("COATING", product["coating"])]
+    labels, values = zip(*fields)
+    widths = [252, 105, 95, 80] if len(fields) == 4 else [252] + [280 / (len(fields) - 1)] * (len(fields) - 1)
     x = 40
     y = 614
     for label, value, width in zip(labels, values, widths):
@@ -228,7 +229,7 @@ def draw_summary(pdf: canvas.Canvas, product: dict) -> None:
 
 def draw_section_table(pdf: canvas.Canvas, product: dict, y: float) -> None:
     section = product["section"]
-    headers = ["Thickness\n(in.)", "Weight\n(psf)", "Fy\n(ksi)", "S+\n(in³/ft)", "S-\n(in³/ft)", "M+\n(in-lb/ft)", "M-\n(in-lb/ft)", "I+\n(in⁴/ft)", "I-\n(in⁴/ft)"]
+    headers = ["Thickness\n(in.)", "Weight\n(psf)", "Fy\n(ksi)", "S+\n(in^3/ft)", "S-\n(in^3/ft)", "M+\n(in-lb/ft)", "M-\n(in-lb/ft)", "I+\n(in^4/ft)", "I-\n(in^4/ft)"]
     values = [
         section["design_thickness"],
         section["weight_psf"],
@@ -262,7 +263,7 @@ def draw_section_table(pdf: canvas.Canvas, product: dict, y: float) -> None:
     table.drawOn(pdf, 40, y)
 
 
-def create_page_one(pdf: canvas.Canvas, product: dict) -> None:
+def create_page_one(pdf: canvas.Canvas, product: dict, source_lines: list[str] | None = None) -> None:
     draw_header(pdf, "DECKING PRODUCT SUBMITTAL", product["id"])
     draw_summary(pdf, product)
 
@@ -274,7 +275,12 @@ def create_page_one(pdf: canvas.Canvas, product: dict) -> None:
     pdf.rect(40, 358, 242, 215, fill=0, stroke=1)
     pdf.rect(310, 358, 262, 215, fill=0, stroke=1)
     draw_fitted_image(pdf, SOURCE_DIR / product["_photo"], 50, 368, 222, 195)
-    draw_fitted_image(pdf, SOURCE_DIR / product["_drawing"], 320, 368, 242, 195)
+    caption = product.get("_drawing_caption")
+    draw_fitted_image(pdf, SOURCE_DIR / product["_drawing"], 320, 388 if caption else 368, 242, 175 if caption else 195)
+    if caption:
+        pdf.setFillColor(MUTED)
+        pdf.setFont("Helvetica", 6.5)
+        pdf.drawCentredString(441, 369, caption)
 
     pdf.setFillColor(TEXT)
     pdf.setFont("Helvetica-Bold", 11)
@@ -288,7 +294,7 @@ def create_page_one(pdf: canvas.Canvas, product: dict) -> None:
     pdf.drawString(40, 224, "SOURCE AND USE")
     pdf.setFillColor(MUTED)
     pdf.setFont("Helvetica", 8)
-    lines = [
+    lines = source_lines if source_lines is not None else [
         "Source: Refined Metal Steel Catalog 2025, published pages " + ", ".join(map(str, product["source_pages"])),
         "ASD section values above are the exact published row for this grade and gauge.",
         "Coating selection does not change the published structural performance values.",

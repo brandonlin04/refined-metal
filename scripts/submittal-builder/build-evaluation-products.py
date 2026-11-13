@@ -13,7 +13,7 @@ from PIL import Image
 from pypdf import PdfReader, PdfWriter, Transformation
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
-from reportlab.platypus import Paragraph
+from reportlab.platypus import Paragraph, Table, TableStyle
 from reportlab.lib.styles import ParagraphStyle
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -35,10 +35,14 @@ PROFILES = {
     "916FD": ('9/16" Form Deck', "Form Deck", '9/16"', (45, 132, 565, 195)),
     "078FD": ('7/8" Form Deck', "Form Deck", '7/8"', (45, 55, 565, 132)),
     "1316FD": ('1 5/16" Form Deck', "Form Deck", '1 5/16"', (45, 195, 565, 270)),
-    "15RD": ('1.5" Roof Deck (B-Deck)', "Roof Deck", '1.5"', (110, 300, 490, 388)),
+    "15RD": ('1.5" Roof Deck (B-Deck)', "Roof Deck", '1.5"', (110, 300, 490, 378)),
     "15CD": ('1.5" Composite Deck', "Composite Deck", '1.5"', (30, 398, 565, 502)),
     "2CD": ('2" Composite Deck', "Composite Deck", '2"', (30, 505, 565, 605)),
     "3CD": ('3" Composite Deck', "Composite Deck", '3"', (30, 608, 565, 708)),
+}
+PRODUCT_PHOTOS = {
+    "916FD": "shallow-form.png", "078FD": "shallow-form.png", "1316FD": "form-1316.png",
+    "15RD": "roof-deck.png", "15CD": "composite-15.png", "2CD": "composite-23.png", "3CD": "composite-23.png",
 }
 
 
@@ -117,13 +121,13 @@ def new_decking_products(existing: list[dict]) -> list[dict]:
 def clip_product() -> dict:
     return {
         "id": "RM-SMART-CLIP", "designation": "RM Smart Clip", "type": "RM Smart Clip",
-        "category": "accessories", "family": "RM Smart Clip", "coating": "Not provided",
+        "category": "accessories", "family": "RM Smart Clip",
         "status": "source_limited", "source": "UL Certificate UL-US-2594886-0",
         "section": {}, "product": "RM Smart Clip", "member": "RM Smart Clip",
         "pdf_filename": "RM-SMART-CLIP.pdf", "pdf_url": "documents/products/RM-SMART-CLIP.pdf",
         "data_gaps": ["Dimensions", "Thickness", "Coating", "Load capacity"],
-        "data_completeness": "Certificate only; product specifications not provided",
-        "notes": ["UL 263 Certificate of Compliance; no hourly fire-resistance rating is stated in this certificate."],
+        "data_completeness": "Certificate of Compliance",
+        "notes": ["UL 263 Certificate of Compliance for RM Smart Clip."],
     }
 
 
@@ -136,31 +140,20 @@ def text_lines(pdf, lines: list[str], y: float) -> None:
         y -= height + 7
 
 
-def generate_deck_pdf(product: dict, figures: dict, source_reader: PdfReader) -> None:
+def generate_deck_pdf(product: dict, drawings: dict, source_reader: PdfReader) -> None:
     buffer = BytesIO()
     pdf = canvas.Canvas(buffer, pagesize=letter, pageCompression=1)
     pdf.setTitle(f"Refined Metal {product['designation']}")
     pdf.setAuthor("Refined Metal")
-    decking.draw_header(pdf, "DECKING PRODUCT SUBMITTAL", product["id"])
-    decking.draw_summary(pdf, product)
-    pdf.setFillColor(decking.TEXT)
-    pdf.setFont("Helvetica-Bold", 10)
-    pdf.drawString(40, 586, "PROFILE DRAWING - ESR-5723")
-    image = figures[product["base_id"].split("-FY")[0]]
-    from reportlab.lib.utils import ImageReader
-    pdf.drawImage(ImageReader(image), 50, 385, width=512, height=175, preserveAspectRatio=True, anchor="c")
-    pdf.setStrokeColor(decking.MID)
-    pdf.rect(40, 368, 532, 205, fill=0, stroke=1)
-    pdf.setFont("Helvetica-Bold", 11)
-    pdf.drawString(40, 339, "SECTION PROPERTIES - BARE STEEL DECK")
-    pdf.setFillColor(decking.RED)
-    pdf.rect(40, 329, 532, 2, fill=1, stroke=0)
-    decking.draw_section_table(pdf, product, 251)
-    pdf.setFillColor(decking.TEXT)
-    pdf.setFont("Helvetica-Bold", 9)
-    pdf.drawString(40, 226, "SOURCE AND USE")
-    text_lines(pdf, [f"Source: ICC-ES ESR-5723, March 2026; Table 2, page {product['source_pages'][0]}; profile drawing, page 15."] + product["notes"], 213)
-    decking.draw_footer(pdf, product, 1)
+    code = product["base_id"].split("-FY")[0]
+    figure = 1 if code.endswith("FD") else 2 if code == "15RD" else 3
+    display_product = {**product, "_photo": f"photos/{PRODUCT_PHOTOS[code]}", "_drawing": drawings[code], "_drawing_caption": f"ESR-5723 Figure {figure}"}
+    decking.create_page_one(pdf, display_product, source_lines=[
+        f"Source: ICC-ES ESR-5723, Table 2, page {product['source_pages'][0]}; profile drawing, page 15.",
+        "ASD section values apply to bare steel deck, without composite concrete action.",
+        "Product views are representative catalog photographs; use the profile drawing for dimensions.",
+        "Refer to the full report for bearing, fastening, loading and installation requirements.",
+    ])
     pdf.showPage()
     decking.draw_header(pdf, "PUBLISHED PERFORMANCE DATA", product["id"])
     pdf.setFillColor(decking.TEXT)
@@ -179,23 +172,50 @@ def generate_deck_pdf(product: dict, figures: dict, source_reader: PdfReader) ->
         writer.write(output)
 
 
-def generate_clip_pdf(product: dict) -> None:
+def generate_clip_pdf(product: dict, certificate_image: Path) -> None:
     buffer = BytesIO()
     pdf = canvas.Canvas(buffer, pagesize=letter, pageCompression=1)
     pdf.setTitle("Refined Metal RM Smart Clip Certification Submittal")
     pdf.setAuthor("Refined Metal")
-    decking.draw_header(pdf, "PRODUCT CERTIFICATION SUBMITTAL", product["id"])
-    for title, lines, y in [
-        ("RM SMART CLIP", ["Product: RM Smart Clip", "Category: CIKV - Framing Members for Fire Resistance", "Standard: UL 263", "Certificate: UL-US-2594886-0", "Report reference: R41911-20251209", "Issue date: December 15, 2025"], 630),
-        ("PRODUCT SPECIFICATIONS", ["Dimensions: Not provided", "Thickness / gauge: Not provided", "Coating: Not provided", "Load capacity: Not provided"], 418),
-        ("CERTIFICATION SCOPE", ["The supplied Certificate of Compliance and product designation addendum are attached on the following two pages.", "This certificate does not state product dimensions, structural capacity or an hourly fire-resistance rating. Use the applicable UL design and manufacturer specifications for project requirements."], 265),
-    ]:
-        pdf.setFillColor(decking.NAVY)
-        pdf.setFont("Helvetica-Bold", 12)
-        pdf.drawString(40, y, title)
-        pdf.setFillColor(decking.RED)
-        pdf.rect(40, y - 8, 532, 2, fill=1, stroke=0)
-        text_lines(pdf, lines, y - 20)
+    decking.draw_header(pdf, "PRODUCT SUBMITTAL", product["id"])
+    decking.draw_summary(pdf, product, fields=[("PRODUCT", "RM Smart Clip"), ("STANDARD", "UL 263"), ("DOCUMENT", "Certificate")])
+    pdf.setFillColor(decking.TEXT)
+    pdf.setFont("Helvetica-Bold", 10)
+    pdf.drawString(40, 586, "PRODUCT INFORMATION")
+    pdf.drawString(310, 586, "UL CERTIFICATE")
+    pdf.setStrokeColor(decking.MID)
+    pdf.rect(40, 358, 242, 215, fill=0, stroke=1)
+    pdf.rect(310, 358, 262, 215, fill=0, stroke=1)
+    style = ParagraphStyle("product", fontName="Helvetica", fontSize=9, leading=14, textColor=decking.TEXT)
+    y = 546
+    for label, value in [("Product", "RM Smart Clip"), ("Manufacturer", "Refined Metal LLC"), ("Product category", "CIKV - Framing Members for Fire Resistance")]:
+        paragraph = Paragraph(f"<b>{label}</b><br/>{value}", style)
+        _, height = paragraph.wrap(218, 100)
+        paragraph.drawOn(pdf, 52, y - height)
+        y -= height + 22
+    decking.draw_fitted_image(pdf, certificate_image, 320, 368, 242, 195)
+    pdf.setFillColor(decking.TEXT)
+    pdf.setFont("Helvetica-Bold", 11)
+    pdf.drawString(40, 330, "CERTIFICATION DETAILS")
+    pdf.setFillColor(decking.RED)
+    pdf.rect(40, 322, 532, 2, fill=1, stroke=0)
+    table = Table([
+        ["STANDARD", "CERTIFICATE", "REPORT REFERENCE", "ISSUED"],
+        ["UL 263", "UL-US-2594886-0", "R41911-20251209", "December 15, 2025"],
+    ], colWidths=[70, 160, 160, 142], rowHeights=[35, 24])
+    table.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, 0), decking.BLUE), ("TEXTCOLOR", (0, 0), (-1, 0), decking.colors.white),
+        ("BACKGROUND", (0, 1), (-1, 1), decking.LIGHT), ("TEXTCOLOR", (0, 1), (-1, 1), decking.TEXT),
+        ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"), ("FONTNAME", (0, 1), (-1, 1), "Helvetica"),
+        ("FONTSIZE", (0, 0), (-1, -1), 7), ("ALIGN", (0, 0), (-1, -1), "CENTER"),
+        ("VALIGN", (0, 0), (-1, -1), "MIDDLE"), ("GRID", (0, 0), (-1, -1), 0.35, decking.colors.white),
+    ]))
+    table.wrapOn(pdf, 532, 59)
+    table.drawOn(pdf, 40, 248)
+    pdf.setFillColor(decking.TEXT)
+    pdf.setFont("Helvetica-Bold", 9)
+    pdf.drawString(40, 224, "SOURCE AND USE")
+    text_lines(pdf, ["1. Source: UL Certificate of Compliance UL-US-2594886-0.", "2. Product designation: RM Smart Clip (see certificate addendum).", "3. The original certificate and addendum are included on the following pages."], 213)
     decking.draw_footer(pdf, product, 1)
     pdf.save()
     buffer.seek(0)
@@ -211,23 +231,30 @@ def build() -> None:
     generated = new_decking_products(catalog["products"])
     # Rebuild only this source's rows; preserve the existing Steel Catalog products.
     base = [p for p in catalog["products"] if p.get("source") != "ICC-ES ESR-5723" and p["id"] != "RM-SMART-CLIP"]
-    with pdfplumber.open(REPORT) as pdf:
-        figures = {code: pdf.pages[14].crop(profile[3]).to_image(resolution=180).original.copy() for code, profile in PROFILES.items()}
     source_reader = PdfReader(REPORT)
     clip = clip_product()
     # The shared web logo is much larger than the printed header. Keep its printed
     # resolution at 300 dpi so hundreds of product PDFs stay within site limits.
     with TemporaryDirectory() as temporary:
+        drawings = {}
+        with pdfplumber.open(REPORT) as pdf:
+            for code, profile in PROFILES.items():
+                drawing = Path(temporary) / f"{code}.png"
+                pdf.pages[14].crop(profile[3]).to_image(resolution=180).save(str(drawing))
+                drawings[code] = drawing
+        with pdfplumber.open(CLIP_CERTIFICATE) as pdf:
+            certificate_image = Path(temporary) / "clip-certificate.png"
+            pdf.pages[0].to_image(resolution=100).save(str(certificate_image))
         with Image.open(decking.LOGO_PATH) as logo:
             logo.thumbnail((384, 216), Image.Resampling.LANCZOS)
             logo_path = Path(temporary) / "rm-logo.png"
             logo.save(logo_path)
         decking.LOGO_PATH = logo_path
         for index, product in enumerate(generated, 1):
-            generate_deck_pdf(product, figures, source_reader)
+            generate_deck_pdf(product, drawings, source_reader)
             if index % 50 == 0:
                 print(f"Generated {index}/{len(generated)} decking PDFs", flush=True)
-        generate_clip_pdf(clip)
+        generate_clip_pdf(clip, certificate_image)
     catalog["products"] = base + generated + [clip]
     for order, product in enumerate(catalog["products"], 1):
         product["sort_order"] = order
